@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Solaris 8 and the Netra 240">
   <meta name="twitter:description" content="As can been seen from the recent twitters, Mr Geek has been tinkering around with a Netra 240 Sparc box lately. One of our customers has decided to do some stuff around an old version of SAP, and so Mr Geek, being a Solaris/Linux engineer on the team, was tasked to see how best to do it.Actually, it was quite a heady task. When the server first came, there was no CDROM drive located on it. That meant a Solaris Jumpstart installation; I used an existing Sun Ultra 10 workstation as a boot/install server and configured the necessary services to run it (in.rarpd, rpc.bootparams, nfs, in.tftpd, rpcbind, mountd).The first time we tried the jumpstart, the Netra simply refused to boot, giving a kernel error. At first, I couldn’t figure out what was happening, and I even trawled through the log files, looking for clues to ascertain the cause of it. It took a long time, but eventually, I traced it to a hardware-related function. The Netra 240 had a Sparc 1.5Ghz chip, and the only version of Solaris 8 certified to run on it was Solaris 8 07/03. And I was using Solaris 8 07/01. Sigh.We were lucky enough to have our company contacts provide for us the appropriate version of Solaris 8, and we proceeded to test it out. Yep, the jumpstart worked perfectly, and I loaded the entire distribution (SUNWCall) onto the disk after partitioning it.Next came the tape autoloader. I was provided a Sun SL48 tape autoloader and it had a fibre-channel (FC) connection on it. I connected it to the Qlogic FC card already installed on the Netra, did a devfsadm -v -c to configure it to recognise the tape drive, touch /reconfigure and a final init 6 to reboot the server.Nada. No /dev/rmt entries.Sigh. Back to good old Google.So I researched out the topic, and it seems that Solaris 8 does not have the inbuilt capabilities required for FC SAN/tape drive connectivity while Solaris 10 does. I sniffed out the packages required for it to work, and they include a whole load of device drivers and Solaris 8 system patches in a piece of software called Sun Storedge. Ah good. I downloaded the whole lot, and proceeded to install it.One final reboot, and I could see all the /dev/rmt entries sitting nicely waiting to be used.I’m one happy camper. :)">
 
-<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-03-19-solaris-8-and-the-netra-240/">
+<meta property="og:url" content="https://cmdbit.github.io/posts/2009-03-19-solaris-8-and-the-netra-240/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Solaris 8 and the Netra 240">
   <meta property="og:description" content="As can been seen from the recent twitters, Mr Geek has been tinkering around with a Netra 240 Sparc box lately. One of our customers has decided to do some stuff around an old version of SAP, and so Mr Geek, being a Solaris/Linux engineer on the team, was tasked to see how best to do it.Actually, it was quite a heady task. When the server first came, there was no CDROM drive located on it. That meant a Solaris Jumpstart installation; I used an existing Sun Ultra 10 workstation as a boot/install server and configured the necessary services to run it (in.rarpd, rpc.bootparams, nfs, in.tftpd, rpcbind, mountd).The first time we tried the jumpstart, the Netra simply refused to boot, giving a kernel error. At first, I couldn’t figure out what was happening, and I even trawled through the log files, looking for clues to ascertain the cause of it. It took a long time, but eventually, I traced it to a hardware-related function. The Netra 240 had a Sparc 1.5Ghz chip, and the only version of Solaris 8 certified to run on it was Solaris 8 07/03. And I was using Solaris 8 07/01. Sigh.We were lucky enough to have our company contacts provide for us the appropriate version of Solaris 8, and we proceeded to test it out. Yep, the jumpstart worked perfectly, and I loaded the entire distribution (SUNWCall) onto the disk after partitioning it.Next came the tape autoloader. I was provided a Sun SL48 tape autoloader and it had a fibre-channel (FC) connection on it. I connected it to the Qlogic FC card already installed on the Netra, did a devfsadm -v -c to configure it to recognise the tape drive, touch /reconfigure and a final init 6 to reboot the server.Nada. No /dev/rmt entries.Sigh. Back to good old Google.So I researched out the topic, and it seems that Solaris 8 does not have the inbuilt capabilities required for FC SAN/tape drive connectivity while Solaris 10 does. I sniffed out the packages required for it to work, and they include a whole load of device drivers and Solaris 8 system patches in a piece of software called Sun Storedge. Ah good. I downloaded the whole lot, and proceeded to install it.One final reboot, and I could see all the /dev/rmt entries sitting nicely waiting to be used.I’m one happy camper. :)">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-03-19-solaris-8-and-the-netra-240/">
+<link rel="canonical" href="https://cmdbit.github.io/posts/2009-03-19-solaris-8-and-the-netra-240/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
+    <a class="navigation-title" href="https://cmdbit.github.io/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-03-19-solaris-8-and-the-netra-240/">
+            <a class="title-link" href="https://cmdbit.github.io/posts/2009-03-19-solaris-8-and-the-netra-240/">
               Solaris 8 and the Netra 240
             </a>
           </h1>

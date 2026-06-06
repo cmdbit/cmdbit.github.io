@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Linux and SRSS 4.2">
   <meta name="twitter:description" content="Yesterday, I managed to debug why the USB thumbdrives don’t work across a failover group for the Linux version of SRSS 4.2. This problem had been irking me since we deployed SRSS 4.2 at a customer site, and the users suddenly found themselves without USB thumbdrive and serial access.On a pure SRSS 4.2 SLES10SP2 machine, I issued the following command :-server# netstat -n | grep 7011tcp 0 1 10.1.1.61:40860 67.2.1.10:7011 SYN_SENTtcp 0 1 10.1.1.61:40890 67.2.1.10:7011 SYN_SENTtcp 0 1 10.1.1.61:40787 66.2.1.10:7011 SYN_SENTPort 7011 is used by utdevmgrd in connecting with the remote Sunrays in establishing device connections, specifically USB, parallel and serial. Something was sent, but no reply was received by the server.Obviously, something weird was going on; the destination IP addresses were inverted; that explained why DTUs couldn’t connect to utdevmgrd via port 7011. utdevmgrd was thus unable to create the symlinks for $UTDEVROOT to be functional EXCEPT for the server that the DTU originally connected to.I replaced /opt/SUNWut/lib/utdevmgrd with the version available in SRSS 4.1 patch 139550-04, and viola, it works out of the box. :Dtcp 0 0 10.1.2.61:40301 10.1.2.65:7011 ESTABLISHEDtcp 0 0 10.1.2.61:40006 10.1.2.67:7011 ESTABLISHEDtcp 0 0 10.1.2.61:40183 10.1.2.69:7011 ESTABLISHEDIt’s just one of those weird things which happens in the course of my work.">
 
-<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2010-04-09-linux-and-srss-4-2/">
+<meta property="og:url" content="https://cmdbit.github.io/posts/2010-04-09-linux-and-srss-4-2/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Linux and SRSS 4.2">
   <meta property="og:description" content="Yesterday, I managed to debug why the USB thumbdrives don’t work across a failover group for the Linux version of SRSS 4.2. This problem had been irking me since we deployed SRSS 4.2 at a customer site, and the users suddenly found themselves without USB thumbdrive and serial access.On a pure SRSS 4.2 SLES10SP2 machine, I issued the following command :-server# netstat -n | grep 7011tcp 0 1 10.1.1.61:40860 67.2.1.10:7011 SYN_SENTtcp 0 1 10.1.1.61:40890 67.2.1.10:7011 SYN_SENTtcp 0 1 10.1.1.61:40787 66.2.1.10:7011 SYN_SENTPort 7011 is used by utdevmgrd in connecting with the remote Sunrays in establishing device connections, specifically USB, parallel and serial. Something was sent, but no reply was received by the server.Obviously, something weird was going on; the destination IP addresses were inverted; that explained why DTUs couldn’t connect to utdevmgrd via port 7011. utdevmgrd was thus unable to create the symlinks for $UTDEVROOT to be functional EXCEPT for the server that the DTU originally connected to.I replaced /opt/SUNWut/lib/utdevmgrd with the version available in SRSS 4.1 patch 139550-04, and viola, it works out of the box. :Dtcp 0 0 10.1.2.61:40301 10.1.2.65:7011 ESTABLISHEDtcp 0 0 10.1.2.61:40006 10.1.2.67:7011 ESTABLISHEDtcp 0 0 10.1.2.61:40183 10.1.2.69:7011 ESTABLISHEDIt’s just one of those weird things which happens in the course of my work.">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2010-04-09-linux-and-srss-4-2/">
+<link rel="canonical" href="https://cmdbit.github.io/posts/2010-04-09-linux-and-srss-4-2/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
+    <a class="navigation-title" href="https://cmdbit.github.io/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2010-04-09-linux-and-srss-4-2/">
+            <a class="title-link" href="https://cmdbit.github.io/posts/2010-04-09-linux-and-srss-4-2/">
               Linux and SRSS 4.2
             </a>
           </h1>

@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Auto negotiation? Nah ...">
   <meta name="twitter:description" content="Recently, I have become a little perturbed by the network performance of one of my customer sites. I kept receiving complaints of poor external network connectivity, one which didn’t make sense when you take into consideration a line speed of 2mbps ADSL. Even when the internet company graciously decided to raise the speed to 5mbps, there were complaints of network dropouts.So last Friday, I and my colleague decided to do some network testing. We did some MTU fragmentation tests to determine the maximum packet size. The result (1272) fell within the norm of most networks, and there wasn’t really anything wrong. However, we immediately discovered that the packet loss from the internal network to the next outside hop was unbearably high - the percentage of loss was almost 40% in some instances. This was extremely bad, and we knew we had to find the source of the problem.We did a lot of tests on the firewall, which was the device nearest to the outside cloud. To make things more confusing, all tests from the outside world to the firewall resulted in packet loss, while that from the outside world to the edge device (before our firewall) resulted in no packet loss. This was getting weirder by the minute.To cut a long story short, my colleague and I later discovered that the edge routing device that the internet provider had installed was operating at 10mbps full duplex, not the 100mbps full duplex rating that they provided us to put into our firewall. The mismatch in the operating speeds meant that our firewall downgraded itself to the lowest possible speed grade (10mbps half duplex) in order to safeguard itself. Well, it did, and in so doing causing tremendous packet loss.Packet loss affects network performance because if the receiving end terminates the session abruptly, the sending end will have to send the entire frame again. When this happens over, say, 1000 users, you get network congestion and invariably slow application response. Definitely not good, to say the least.">
 
-<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-06-23-auto-negotiation-nah/">
+<meta property="og:url" content="https://cmdbit.github.io/posts/2009-06-23-auto-negotiation-nah/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Auto negotiation? Nah ...">
   <meta property="og:description" content="Recently, I have become a little perturbed by the network performance of one of my customer sites. I kept receiving complaints of poor external network connectivity, one which didn’t make sense when you take into consideration a line speed of 2mbps ADSL. Even when the internet company graciously decided to raise the speed to 5mbps, there were complaints of network dropouts.So last Friday, I and my colleague decided to do some network testing. We did some MTU fragmentation tests to determine the maximum packet size. The result (1272) fell within the norm of most networks, and there wasn’t really anything wrong. However, we immediately discovered that the packet loss from the internal network to the next outside hop was unbearably high - the percentage of loss was almost 40% in some instances. This was extremely bad, and we knew we had to find the source of the problem.We did a lot of tests on the firewall, which was the device nearest to the outside cloud. To make things more confusing, all tests from the outside world to the firewall resulted in packet loss, while that from the outside world to the edge device (before our firewall) resulted in no packet loss. This was getting weirder by the minute.To cut a long story short, my colleague and I later discovered that the edge routing device that the internet provider had installed was operating at 10mbps full duplex, not the 100mbps full duplex rating that they provided us to put into our firewall. The mismatch in the operating speeds meant that our firewall downgraded itself to the lowest possible speed grade (10mbps half duplex) in order to safeguard itself. Well, it did, and in so doing causing tremendous packet loss.Packet loss affects network performance because if the receiving end terminates the session abruptly, the sending end will have to send the entire frame again. When this happens over, say, 1000 users, you get network congestion and invariably slow application response. Definitely not good, to say the least.">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-06-23-auto-negotiation-nah/">
+<link rel="canonical" href="https://cmdbit.github.io/posts/2009-06-23-auto-negotiation-nah/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
+    <a class="navigation-title" href="https://cmdbit.github.io/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-06-23-auto-negotiation-nah/">
+            <a class="title-link" href="https://cmdbit.github.io/posts/2009-06-23-auto-negotiation-nah/">
               Auto negotiation? Nah ...
             </a>
           </h1>

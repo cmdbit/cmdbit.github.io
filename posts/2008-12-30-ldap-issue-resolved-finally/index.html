@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="LDAP issue resolved ... finally!!!!">
   <meta name="twitter:description" content="Yes, I (finally) solved the LDAP issue that has been troubling me for the past few weeks.The issue was that I couldn’t get the native Solaris LDAP client to recognise the Sun Enterprise Directory Server that I was using. And all this despite my being able to join the Solaris LDAP client to the domain controller.After a lot of troubleshooting and reading of error logs over 3 days, I managed to nail the problem.It turns out that the Solaris LDAP client is set up to recognise user and groups with the attributes posixAccount and posixGroup respectively.And even the group within which the user accounts reside must be called ou=People.Once I added these objectclasses to each individual account, the LDAP client worked perfectly. I also created 2 organisational units for each suborganisation to further sub-divide the users and groups.">
 
-<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2008-12-30-ldap-issue-resolved-finally/">
+<meta property="og:url" content="https://cmdbit.github.io/posts/2008-12-30-ldap-issue-resolved-finally/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="LDAP issue resolved ... finally!!!!">
   <meta property="og:description" content="Yes, I (finally) solved the LDAP issue that has been troubling me for the past few weeks.The issue was that I couldn’t get the native Solaris LDAP client to recognise the Sun Enterprise Directory Server that I was using. And all this despite my being able to join the Solaris LDAP client to the domain controller.After a lot of troubleshooting and reading of error logs over 3 days, I managed to nail the problem.It turns out that the Solaris LDAP client is set up to recognise user and groups with the attributes posixAccount and posixGroup respectively.And even the group within which the user accounts reside must be called ou=People.Once I added these objectclasses to each individual account, the LDAP client worked perfectly. I also created 2 organisational units for each suborganisation to further sub-divide the users and groups.">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2008-12-30-ldap-issue-resolved-finally/">
+<link rel="canonical" href="https://cmdbit.github.io/posts/2008-12-30-ldap-issue-resolved-finally/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
+    <a class="navigation-title" href="https://cmdbit.github.io/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2008-12-30-ldap-issue-resolved-finally/">
+            <a class="title-link" href="https://cmdbit.github.io/posts/2008-12-30-ldap-issue-resolved-finally/">
               LDAP issue resolved ... finally!!!!
             </a>
           </h1>

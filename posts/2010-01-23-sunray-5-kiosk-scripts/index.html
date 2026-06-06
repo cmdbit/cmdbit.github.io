@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Sunray 5 kiosk scripts">
   <meta name="twitter:description" content="I found that in SRSS 4.2, $UTDEVROOT was not referenced properly. If you try to cd to $UTDEVROOT on any Sunray system, the ‘unit’ file referenced in the path is missing, and so you get a ‘No such file or directory found’ error. Weird.The workaround for me is to access the DISPLAY variable and then grep the MAC address from there. The location field can then be extracted from the ‘utdesktop’ output as is usually the case.# Sunray 4.1theMACAddr=cd $UTDEVROOT; /bin/pwd | sed &#39;s/.*\(............\)/\1/&#39;theLocation=/opt/SUNWut/sbin/utdesktop -o | grep $theMACAddr | awk -F,&#39;{print $2;}&#39;# Sunray 4.2MYDISP=echo $DISPLAY | awk -F: &#39;{print $2}&#39; | awk -F. &#39;{print $1}&#39;theMACAddr=grep TERMINAL /tmp/SUNWut/config/dispinfo/$MYDISP | awk -F. &#39;{print $2}&#39;theLocation=/opt/SUNWut/sbin/utdesktop -o | grep $theMACAddr | awk -F, &#39;{print $2;}&#39;">
 
-<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2010-01-23-sunray-5-kiosk-scripts/">
+<meta property="og:url" content="https://cmdbit.github.io/posts/2010-01-23-sunray-5-kiosk-scripts/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Sunray 5 kiosk scripts">
   <meta property="og:description" content="I found that in SRSS 4.2, $UTDEVROOT was not referenced properly. If you try to cd to $UTDEVROOT on any Sunray system, the ‘unit’ file referenced in the path is missing, and so you get a ‘No such file or directory found’ error. Weird.The workaround for me is to access the DISPLAY variable and then grep the MAC address from there. The location field can then be extracted from the ‘utdesktop’ output as is usually the case.# Sunray 4.1theMACAddr=cd $UTDEVROOT; /bin/pwd | sed &#39;s/.*\(............\)/\1/&#39;theLocation=/opt/SUNWut/sbin/utdesktop -o | grep $theMACAddr | awk -F,&#39;{print $2;}&#39;# Sunray 4.2MYDISP=echo $DISPLAY | awk -F: &#39;{print $2}&#39; | awk -F. &#39;{print $1}&#39;theMACAddr=grep TERMINAL /tmp/SUNWut/config/dispinfo/$MYDISP | awk -F. &#39;{print $2}&#39;theLocation=/opt/SUNWut/sbin/utdesktop -o | grep $theMACAddr | awk -F, &#39;{print $2;}&#39;">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2010-01-23-sunray-5-kiosk-scripts/">
+<link rel="canonical" href="https://cmdbit.github.io/posts/2010-01-23-sunray-5-kiosk-scripts/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
+    <a class="navigation-title" href="https://cmdbit.github.io/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2010-01-23-sunray-5-kiosk-scripts/">
+            <a class="title-link" href="https://cmdbit.github.io/posts/2010-01-23-sunray-5-kiosk-scripts/">
               Sunray 5 kiosk scripts
             </a>
           </h1>

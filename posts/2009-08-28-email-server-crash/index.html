@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Email server crash">
   <meta name="twitter:description" content="This week has proven to be a really busy week. First it was a server crash at site A, then just today I had another server crash at site B. It’s really just my luck to have so many server crashes this week.Today’s episode involved an email server running Zimbra that lived within a VM in ESXi 3.5. The server crashed due to the lack of space in the root directory. Essentially that meant 100% in /, which is suicidal in the Linux world. How that eluded me is a question waiting to be answered, as I thought I did check the space and that percentage hung around 83% yesterday. (How that went to 100% in 8 hours is anybody’s guess.)So I had to restore the entire system from backup. That was trivial thanks to zfs, a filesystem developed by Sun, and its snapshotting features. As I set it to snapshot the filesystem every 12 hours, I was able to recover all the files dating from yesterday night.Once I checked the logs, I knew what went wrong in the install. I assumed that Zimbra stored its email queues like everybody else in /var/run or /var/spool. Instead, Zimbra stores its email queue directly under /opt. Now that wouldn’t matter to anyone who specifies a huge directory like 100GB for /opt. But it doesn’t work for people like who like to partition directories according to their usage. Obviously, I was in a lot of trouble.I quickly created a new 150GB filesystem on /dev/sdb1, did a mkfs.ext3 on it, and Zimbra went straight into it. Started Zimbra via zmcontrol start, and off it went.It was like a dream come true to see the UI once again.">
 
-<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-08-28-email-server-crash/">
+<meta property="og:url" content="https://cmdbit.github.io/posts/2009-08-28-email-server-crash/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Email server crash">
   <meta property="og:description" content="This week has proven to be a really busy week. First it was a server crash at site A, then just today I had another server crash at site B. It’s really just my luck to have so many server crashes this week.Today’s episode involved an email server running Zimbra that lived within a VM in ESXi 3.5. The server crashed due to the lack of space in the root directory. Essentially that meant 100% in /, which is suicidal in the Linux world. How that eluded me is a question waiting to be answered, as I thought I did check the space and that percentage hung around 83% yesterday. (How that went to 100% in 8 hours is anybody’s guess.)So I had to restore the entire system from backup. That was trivial thanks to zfs, a filesystem developed by Sun, and its snapshotting features. As I set it to snapshot the filesystem every 12 hours, I was able to recover all the files dating from yesterday night.Once I checked the logs, I knew what went wrong in the install. I assumed that Zimbra stored its email queues like everybody else in /var/run or /var/spool. Instead, Zimbra stores its email queue directly under /opt. Now that wouldn’t matter to anyone who specifies a huge directory like 100GB for /opt. But it doesn’t work for people like who like to partition directories according to their usage. Obviously, I was in a lot of trouble.I quickly created a new 150GB filesystem on /dev/sdb1, did a mkfs.ext3 on it, and Zimbra went straight into it. Started Zimbra via zmcontrol start, and off it went.It was like a dream come true to see the UI once again.">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-08-28-email-server-crash/">
+<link rel="canonical" href="https://cmdbit.github.io/posts/2009-08-28-email-server-crash/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
+    <a class="navigation-title" href="https://cmdbit.github.io/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-08-28-email-server-crash/">
+            <a class="title-link" href="https://cmdbit.github.io/posts/2009-08-28-email-server-crash/">
               Email server crash
             </a>
           </h1>

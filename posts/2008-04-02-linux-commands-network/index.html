@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Linux commands - network">
   <meta name="twitter:description" content="I’m planning to start this monthly section as a way of guiding users through the maze of Linux commands. This month, let’s focus on commands related to networking on Linux.Basicifconfig - lists IP address (similar to ipconfig in Windows)iwlist scan - shows wireless networks that are available in the area along with basic encryption informationroute -n - Lists kernel IP routing table – Good for troubleshooting problems with the gateway (netstat -rn = equivalent command)sudo route add default gw 192.168.1.1 - Example of how to set the default gateway to 192.168.1.1sudo route del default gw 192.168.1.1 - Example of how to delete the default gateway settingsudo ifconfig up/down - Brings up/down the interface for the specified interfacesudo dhclient - Request IP address from DNS server for specified interfacesudo dhclient -r - Release IP address associated with specified interfacesudo iptables -L - Lists firewall rulessudo ifup/ifdown - Brings up/down the interface and clears the routing table for the specified interfaceAdvancedlshw -C network - Shows interface and driver associated with each networking devicelspci -nn - Shows hardware connected to the pci buslsusb - Shows USB connected hardwarelshw -C usb - Additional info on USB related hardware (good for USB dongles)cat /etc/modprobe.d/blacklist - List modules that will not be loaded by the Operating System at boot timelsmod - lists currently loaded kernel modules. (Example usage - lsmod | grep ndiswrapper)sudo modprobe ***** - Loads the kernel module **** . (Example usage - sudo modprobe ndiswrapper, sudo modprobe r818x, sudo modprobe ath_pci)sudo modprobe -r **** - Unloades the kernel module ****. (Example usage - sudo modprobe -r ndiswrapper)cat /etc/resolv.conf - Lists DNS servers associated with network connections (Network Manager)/etc/dhcp3/dhclient.conf - File which sets or modifies dns (domain name servers) settings">
 
-<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2008-04-02-linux-commands-network/">
+<meta property="og:url" content="https://cmdbit.github.io/posts/2008-04-02-linux-commands-network/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Linux commands - network">
   <meta property="og:description" content="I’m planning to start this monthly section as a way of guiding users through the maze of Linux commands. This month, let’s focus on commands related to networking on Linux.Basicifconfig - lists IP address (similar to ipconfig in Windows)iwlist scan - shows wireless networks that are available in the area along with basic encryption informationroute -n - Lists kernel IP routing table – Good for troubleshooting problems with the gateway (netstat -rn = equivalent command)sudo route add default gw 192.168.1.1 - Example of how to set the default gateway to 192.168.1.1sudo route del default gw 192.168.1.1 - Example of how to delete the default gateway settingsudo ifconfig up/down - Brings up/down the interface for the specified interfacesudo dhclient - Request IP address from DNS server for specified interfacesudo dhclient -r - Release IP address associated with specified interfacesudo iptables -L - Lists firewall rulessudo ifup/ifdown - Brings up/down the interface and clears the routing table for the specified interfaceAdvancedlshw -C network - Shows interface and driver associated with each networking devicelspci -nn - Shows hardware connected to the pci buslsusb - Shows USB connected hardwarelshw -C usb - Additional info on USB related hardware (good for USB dongles)cat /etc/modprobe.d/blacklist - List modules that will not be loaded by the Operating System at boot timelsmod - lists currently loaded kernel modules. (Example usage - lsmod | grep ndiswrapper)sudo modprobe ***** - Loads the kernel module **** . (Example usage - sudo modprobe ndiswrapper, sudo modprobe r818x, sudo modprobe ath_pci)sudo modprobe -r **** - Unloades the kernel module ****. (Example usage - sudo modprobe -r ndiswrapper)cat /etc/resolv.conf - Lists DNS servers associated with network connections (Network Manager)/etc/dhcp3/dhclient.conf - File which sets or modifies dns (domain name servers) settings">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2008-04-02-linux-commands-network/">
+<link rel="canonical" href="https://cmdbit.github.io/posts/2008-04-02-linux-commands-network/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
+    <a class="navigation-title" href="https://cmdbit.github.io/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2008-04-02-linux-commands-network/">
+            <a class="title-link" href="https://cmdbit.github.io/posts/2008-04-02-linux-commands-network/">
               Linux commands - network
             </a>
           </h1>
