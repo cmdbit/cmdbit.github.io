@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Temperature Logging with ESP8266 · Confusing Musings and Wandering Ponderings
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Mark Chang">
+<meta name="description" content="
+  Temperature Logging
+  
+    
+    Link to heading
+  
+
+We had to do some temperature monitoring of some classrooms during winter time and I felt it was a good time to deploy some ESP8266 devices out in the classrooms as temperature loggers. These would send payloads to a new MQTT server which could be read by any subscriber. While I did toy around with the idea of writing directly to our MySQL server, we decided against it as we did not want additional load on the database server.">
+<meta name="keywords" content="">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Temperature Logging with ESP8266">
+  <meta name="twitter:description" content="Temperature Logging Link to heading We had to do some temperature monitoring of some classrooms during winter time and I felt it was a good time to deploy some ESP8266 devices out in the classrooms as temperature loggers. These would send payloads to a new MQTT server which could be read by any subscriber. While I did toy around with the idea of writing directly to our MySQL server, we decided against it as we did not want additional load on the database server.">
+
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2020-06-19-esp8266-temp-logging/">
+  <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
+  <meta property="og:title" content="Temperature Logging with ESP8266">
+  <meta property="og:description" content="Temperature Logging Link to heading We had to do some temperature monitoring of some classrooms during winter time and I felt it was a good time to deploy some ESP8266 devices out in the classrooms as temperature loggers. These would send payloads to a new MQTT server which could be read by any subscriber. While I did toy around with the idea of writing directly to our MySQL server, we decided against it as we did not want additional load on the database server.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-06-19T10:45:00+12:00">
+    <meta property="article:modified_time" content="2020-06-19T10:45:00+12:00">
+
+
+
+
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2020-06-19-esp8266-temp-logging/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css" integrity="sha256-9rGzWnsCUhslM49s9Yl1&#43;ZgKbBKEd2P&#43;NaSDB3WM0ec=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.ad48f476275974885bdc03d5251e3cdbe1678c54a63ff772376b0ed2adc468dd.css" integrity="sha256-rUj0didZdIhb3APVJR482&#43;FnjFSmP/dyN2sO0q3EaN0=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
+      Confusing Musings and Wandering Ponderings
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pages/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2020-06-19-esp8266-temp-logging/">
+              Temperature Logging with ESP8266
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2020-06-19T10:45:00&#43;12:00">
+                June 19, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/technology/">Technology</a>
+      <span class="separator">•</span>
+    <a href="/categories/business/">Business</a></div>
+
+          
+        </div>
+      </header>
+
+      
+
+
+      <div class="post-content">
+        
+        <h2 id="temperature-logging">
+  Temperature Logging
+  <a class="heading-link" href="#temperature-logging">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>We had to do some temperature monitoring of some classrooms during winter time and I felt it was a good time to deploy some ESP8266 devices out in the classrooms as temperature loggers. These would send payloads to a new MQTT server which could be read by any subscriber. While I did toy around with the idea of writing directly to our MySQL server, we decided against it as we did not want additional load on the database server.</p>
+<p>The results were excellent; the temperatures were well within 0.2 degrees of a commercial thermal probe.</p>
+<h2 id="parts-list">
+  Parts List
+  <a class="heading-link" href="#parts-list">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://www.adafruit.com/product/3046"  class="external-link" target="_blank" rel="noopener">Adafruit Feather Huzzah ESP8266</a></li>
+<li>Breadboard</li>
+<li>Jumper wires</li>
+<li><a href="https://datasheets.maximintegrated.com/en/ds/DS18S20.pdf"  class="external-link" target="_blank" rel="noopener">Dallas DS18S20</a></li>
+<li>4.7K ohm resistor</li>
+</ul>
+<h2 id="coding">
+  Coding
+  <a class="heading-link" href="#coding">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The code was pretty straight forward. Coding was on Arduino 1.8.13 with the ESP8266 addon. Libraries used were OneWire, DallasTemperature and the excellent PubSubClient. We used GPIO Pin 2 as the input pin for the Dallas temperature sensor.</p>
+<pre tabindex="0"><code>#include &lt;ESP8266WiFi.h&gt;
+#include &lt;OneWire.h&gt;
+#include &lt;DallasTemperature.h&gt;
+#include &lt;PubSubClient.h&gt;
+
+const int oneWireBus = 2;     
+OneWire oneWire(oneWireBus);
+DallasTemperature sensors(&amp;oneWire);
+int numberOfDevices;
+DeviceAddress tempDeviceAddress; 
+
+#define wlan_ssid &#34;&#34;
+#define wlan_pass &#34;&#34;
+
+#define mqtt_device &#34;&#34;
+#define mqtt_server &#34;&#34;
+#define mqtt_user &#34;&#34;
+#define mqtt_password &#34;&#34;
+
+#define temperature_topic &#34;&#34;
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+void setup()
+{
+  Serial.begin(115200);
+  connectToWifi();
+  client.setServer(mqtt_server, 1883);
+  sensors.begin();
+  
+  Serial.print(&#34;Locating devices...&#34;);
+  Serial.print(&#34;Found &#34;);
+  numberOfDevices = sensors.getDeviceCount();
+  Serial.print(numberOfDevices, DEC);
+  Serial.println(&#34; devices.&#34;);
+
+ for(int i=0;i&lt;numberOfDevices; i++)
+ {
+    if(sensors.getAddress(tempDeviceAddress, i))
+    {
+      Serial.print(&#34;Found device &#34;);
+      Serial.print(i, DEC);
+      Serial.print(&#34; with address: &#34;);
+      printAddress(tempDeviceAddress);
+      printResolution(tempDeviceAddress);
+      Serial.println();
+    } else {
+      Serial.print(&#34;Found ghost device at &#34;);
+      Serial.print(i, DEC);
+      Serial.print(&#34; but could not detect address. Check power and cabling&#34;);
+    }
+  }
+  
+  Serial.print(&#34;Parasite power is: &#34;);
+  if (sensors.isParasitePowerMode())
+    Serial.println(&#34;ON&#34;);
+  else
+    Serial.println(&#34;OFF&#34;);
+    
+}
+
+void printAddress(DeviceAddress deviceAddress)
+{
+  for (uint8_t i = 0; i &lt; 8; i++)
+  {
+    if (deviceAddress[i] &lt; 16)
+      Serial.print(&#34;0&#34;);
+      Serial.print(deviceAddress[i], HEX);
+  }
+  Serial.println();
+}
+
+void printResolution(DeviceAddress deviceAddress)
+{
+  Serial.print(&#34;Resolution : &#34;);
+  Serial.print(sensors.getResolution(deviceAddress));
+  Serial.println();   
+}
+
+void connectToWifi()
+{
+  delay(5);
+  Serial.println(); Serial.println();
+  Serial.print(&#34;Connecting to &#34;);
+  Serial.println(wlan_ssid);
+
+  WiFi.begin(wlan_ssid, wlan_pass);
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(&#34;.&#34;);
+  }
+ 
+  Serial.println();
+  Serial.println(&#34;WiFi connected&#34;);
+  Serial.println(&#34;IP address: &#34;); 
+  Serial.println(WiFi.localIP());
+}
+
+void reconnect() {
+  // Loop until we&#39;re reconnected
+  while (!client.connected()) {
+    Serial.print(&#34;Attempting MQTT connection...&#34;);
+    if (client.connect(mqtt_device, mqtt_user, mqtt_password)) {
+      Serial.println(&#34;connected&#34;);
+    } else {
+      Serial.print(&#34;failed, rc=&#34;);
+      Serial.print(client.state());
+      Serial.println(&#34; try again in 5 seconds&#34;);
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
+bool checkBound(float newValue, float prevValue, float maxDiff)
+{
+  return !isnan(newValue) &amp;&amp;
+         (newValue &lt; prevValue - maxDiff || newValue &gt; prevValue + maxDiff);
+}
+
+long lastMsg = 0;
+float temp = 0.0;
+float hum = 0.0;
+float diff = 0.1;
+
+void loop()
+{
+  if (!client.connected())
+  {
+    reconnect();
+  }
+  client.loop();
+
+  long now = millis();
+  if (now - lastMsg &gt; 1000)
+  {
+    lastMsg = now;
+   
+    sensors.requestTemperatures(); 
+    float temperatureC = sensors.getTempCByIndex(0);
+
+    if (checkBound(temperatureC, temp, diff))
+    {
+      temp = temperatureC;
+      Serial.print(&#34;New temperature detected : &#34;);
+      Serial.print(String(temp).c_str());
+      Serial.println(&#34;ºC&#34;);
+      client.publish(temperature_topic, String(temp).c_str(), true);
+    }
+    Serial.println(temperatureC);
+    delay(5000);
+  }
+}
+</code></pre>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2007 -
+    
+    2026
+     Mark Chang 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

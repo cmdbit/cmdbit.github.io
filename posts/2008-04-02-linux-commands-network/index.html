@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Linux commands - network · Confusing Musings and Wandering Ponderings
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Mark Chang">
+<meta name="description" content="I&rsquo;m planning to start this monthly section as a way of guiding users through the maze of Linux commands. This month, let&rsquo;s focus on commands related to networking on Linux.Basicifconfig - lists IP address (similar to ipconfig in Windows)iwlist scan - shows wireless networks that are available in the area along with basic encryption informationroute -n - Lists kernel IP routing table &ndash; Good for troubleshooting problems with the gateway (netstat -rn = equivalent command)sudo route add default gw 192.168.1.1 - Example of how to set the default gateway to 192.168.1.1sudo route del default gw 192.168.1.1 - Example of how to delete the default gateway settingsudo ifconfig  up/down - Brings up/down the interface for the specified interfacesudo dhclient  - Request IP address from DNS server for specified interfacesudo dhclient -r  - Release IP address associated with specified interfacesudo iptables -L - Lists firewall rulessudo ifup/ifdown  - Brings up/down the interface and clears the routing table for the specified interfaceAdvancedlshw -C network - Shows interface and driver associated with each networking devicelspci -nn - Shows hardware connected to the pci buslsusb - Shows USB connected hardwarelshw -C usb - Additional info on USB related hardware (good for USB dongles)cat /etc/modprobe.d/blacklist - List modules that will not be loaded by the Operating System at boot timelsmod - lists currently loaded kernel modules. (Example usage - lsmod | grep ndiswrapper)sudo modprobe ***** - Loads the kernel module **** . (Example usage - sudo modprobe ndiswrapper, sudo modprobe r818x, sudo modprobe ath_pci)sudo modprobe -r **** - Unloades the kernel module ****. (Example usage - sudo modprobe -r ndiswrapper)cat /etc/resolv.conf - Lists DNS servers associated with network connections (Network Manager)/etc/dhcp3/dhclient.conf - File which sets or modifies dns (domain name servers) settings">
+<meta name="keywords" content="">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Linux commands - network">
+  <meta name="twitter:description" content="I’m planning to start this monthly section as a way of guiding users through the maze of Linux commands. This month, let’s focus on commands related to networking on Linux.Basicifconfig - lists IP address (similar to ipconfig in Windows)iwlist scan - shows wireless networks that are available in the area along with basic encryption informationroute -n - Lists kernel IP routing table – Good for troubleshooting problems with the gateway (netstat -rn = equivalent command)sudo route add default gw 192.168.1.1 - Example of how to set the default gateway to 192.168.1.1sudo route del default gw 192.168.1.1 - Example of how to delete the default gateway settingsudo ifconfig up/down - Brings up/down the interface for the specified interfacesudo dhclient - Request IP address from DNS server for specified interfacesudo dhclient -r - Release IP address associated with specified interfacesudo iptables -L - Lists firewall rulessudo ifup/ifdown - Brings up/down the interface and clears the routing table for the specified interfaceAdvancedlshw -C network - Shows interface and driver associated with each networking devicelspci -nn - Shows hardware connected to the pci buslsusb - Shows USB connected hardwarelshw -C usb - Additional info on USB related hardware (good for USB dongles)cat /etc/modprobe.d/blacklist - List modules that will not be loaded by the Operating System at boot timelsmod - lists currently loaded kernel modules. (Example usage - lsmod | grep ndiswrapper)sudo modprobe ***** - Loads the kernel module **** . (Example usage - sudo modprobe ndiswrapper, sudo modprobe r818x, sudo modprobe ath_pci)sudo modprobe -r **** - Unloades the kernel module ****. (Example usage - sudo modprobe -r ndiswrapper)cat /etc/resolv.conf - Lists DNS servers associated with network connections (Network Manager)/etc/dhcp3/dhclient.conf - File which sets or modifies dns (domain name servers) settings">
+
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2008-04-02-linux-commands-network/">
+  <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
+  <meta property="og:title" content="Linux commands - network">
+  <meta property="og:description" content="I’m planning to start this monthly section as a way of guiding users through the maze of Linux commands. This month, let’s focus on commands related to networking on Linux.Basicifconfig - lists IP address (similar to ipconfig in Windows)iwlist scan - shows wireless networks that are available in the area along with basic encryption informationroute -n - Lists kernel IP routing table – Good for troubleshooting problems with the gateway (netstat -rn = equivalent command)sudo route add default gw 192.168.1.1 - Example of how to set the default gateway to 192.168.1.1sudo route del default gw 192.168.1.1 - Example of how to delete the default gateway settingsudo ifconfig up/down - Brings up/down the interface for the specified interfacesudo dhclient - Request IP address from DNS server for specified interfacesudo dhclient -r - Release IP address associated with specified interfacesudo iptables -L - Lists firewall rulessudo ifup/ifdown - Brings up/down the interface and clears the routing table for the specified interfaceAdvancedlshw -C network - Shows interface and driver associated with each networking devicelspci -nn - Shows hardware connected to the pci buslsusb - Shows USB connected hardwarelshw -C usb - Additional info on USB related hardware (good for USB dongles)cat /etc/modprobe.d/blacklist - List modules that will not be loaded by the Operating System at boot timelsmod - lists currently loaded kernel modules. (Example usage - lsmod | grep ndiswrapper)sudo modprobe ***** - Loads the kernel module **** . (Example usage - sudo modprobe ndiswrapper, sudo modprobe r818x, sudo modprobe ath_pci)sudo modprobe -r **** - Unloades the kernel module ****. (Example usage - sudo modprobe -r ndiswrapper)cat /etc/resolv.conf - Lists DNS servers associated with network connections (Network Manager)/etc/dhcp3/dhclient.conf - File which sets or modifies dns (domain name servers) settings">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2008-04-02T21:18:00+13:00">
+    <meta property="article:modified_time" content="2008-04-02T21:18:00+13:00">
+
+
+
+
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2008-04-02-linux-commands-network/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css" integrity="sha256-9rGzWnsCUhslM49s9Yl1&#43;ZgKbBKEd2P&#43;NaSDB3WM0ec=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.ad48f476275974885bdc03d5251e3cdbe1678c54a63ff772376b0ed2adc468dd.css" integrity="sha256-rUj0didZdIhb3APVJR482&#43;FnjFSmP/dyN2sO0q3EaN0=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
+      Confusing Musings and Wandering Ponderings
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pages/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2008-04-02-linux-commands-network/">
+              Linux commands - network
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2008-04-02T21:18:00&#43;13:00">
+                April 2, 2008
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/technology/">Technology</a></div>
+
+          
+        </div>
+      </header>
+
+      
+
+
+      <div class="post-content">
+        
+        <p>I&rsquo;m planning to start this monthly section as a way of guiding users through the maze of Linux commands. This month, let&rsquo;s focus on commands related to networking on Linux.Basicifconfig - lists IP address (similar to ipconfig in Windows)iwlist scan - shows wireless networks that are available in the area along with basic encryption informationroute -n - Lists kernel IP routing table &ndash; Good for troubleshooting problems with the gateway (netstat -rn = equivalent command)sudo route add default gw 192.168.1.1 - Example of how to set the default gateway to 192.168.1.1sudo route del default gw 192.168.1.1 - Example of how to delete the default gateway settingsudo ifconfig  up/down - Brings up/down the interface for the specified interfacesudo dhclient  - Request IP address from DNS server for specified interfacesudo dhclient -r  - Release IP address associated with specified interfacesudo iptables -L - Lists firewall rulessudo ifup/ifdown  - Brings up/down the interface and clears the routing table for the specified interfaceAdvancedlshw -C network - Shows interface and driver associated with each networking devicelspci -nn - Shows hardware connected to the pci buslsusb - Shows USB connected hardwarelshw -C usb - Additional info on USB related hardware (good for USB dongles)cat /etc/modprobe.d/blacklist - List modules that will not be loaded by the Operating System at boot timelsmod - lists currently loaded kernel modules. (Example usage - lsmod | grep ndiswrapper)sudo modprobe ***** - Loads the kernel module **** . (Example usage - sudo modprobe ndiswrapper, sudo modprobe r818x, sudo modprobe ath_pci)sudo modprobe -r **** - Unloades the kernel module ****. (Example usage - sudo modprobe -r ndiswrapper)cat /etc/resolv.conf - Lists DNS servers associated with network connections (Network Manager)/etc/dhcp3/dhclient.conf - File which sets or modifies dns (domain name servers) settings</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2007 -
+    
+    2026
+     Mark Chang 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>
