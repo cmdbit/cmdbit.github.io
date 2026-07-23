@@ -2,16 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://cmdbit.github.io/</loc>
+    <lastmod>2026-07-24T10:44:09+12:00</lastmod>
+  </url><url>
+    <loc>https://cmdbit.github.io/posts/2026-07-24-google-chrome-updates/</loc>
+    <lastmod>2026-07-24T10:44:09+12:00</lastmod>
+  </url><url>
+    <loc>https://cmdbit.github.io/posts/</loc>
+    <lastmod>2026-07-24T10:44:09+12:00</lastmod>
+  </url><url>
+    <loc>https://cmdbit.github.io/tags/</loc>
+    <lastmod>2026-07-24T10:44:09+12:00</lastmod>
+  </url><url>
+    <loc>https://cmdbit.github.io/tags/technology/</loc>
+    <lastmod>2026-07-24T10:44:09+12:00</lastmod>
+  </url><url>
     <loc>https://cmdbit.github.io/categories/</loc>
     <lastmod>2025-02-05T21:52:29+13:00</lastmod>
   </url><url>
-    <loc>https://cmdbit.github.io/</loc>
-    <lastmod>2025-02-05T21:52:29+13:00</lastmod>
-  </url><url>
     <loc>https://cmdbit.github.io/posts/2025-02-04-pixel-fold/</loc>
-    <lastmod>2025-02-05T21:52:29+13:00</lastmod>
-  </url><url>
-    <loc>https://cmdbit.github.io/posts/</loc>
     <lastmod>2025-02-05T21:52:29+13:00</lastmod>
   </url><url>
     <loc>https://cmdbit.github.io/categories/technology/</loc>
@@ -233,7 +242,5 @@
     <loc>https://cmdbit.github.io/pages/about/</loc>
   </url><url>
     <loc>https://cmdbit.github.io/pages/</loc>
-  </url><url>
-    <loc>https://cmdbit.github.io/tags/</loc>
   </url>
 </urlset>

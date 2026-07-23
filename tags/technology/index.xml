@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Technology on Confusing Musings and Wandering Ponderings</title>
+    <link>https://cmdbit.github.io/tags/technology/</link>
+    <description>Recent content in Technology on Confusing Musings and Wandering Ponderings</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Jul 2026 10:44:09 +1200</lastBuildDate>
+    <atom:link href="https://cmdbit.github.io/tags/technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google Chrome updates</title>
+      <link>https://cmdbit.github.io/posts/2026-07-24-google-chrome-updates/</link>
+      <pubDate>Fri, 24 Jul 2026 10:44:09 +1200</pubDate>
+      <guid>https://cmdbit.github.io/posts/2026-07-24-google-chrome-updates/</guid>
+      <description>&lt;p&gt;Ever spent a long time chasing your tail and when you finally discover the solution, there is a sense of achievement? I felt like that today.&lt;/p&gt;&#xA;&lt;p&gt;This effort involved troubleshooting a particular piece of software which the school uses to conduct exams. It worked for the most part but all of a sudden, students started reporting failures. I was suspicious of network changes but a call to the vendors cleared that up - there were no changes made to the firewall.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
