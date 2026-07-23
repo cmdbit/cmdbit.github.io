@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Virtual Private Servers · Confusing Musings and Wandering Ponderings
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Mark Chang">
+<meta name="description" content="I had wanted to experiment with VPS solutions for quite a while now.
+VPS or virtual private servers is a hosted solution that have many advantages (and disadvantages) to normal web hosting solutions. They give you full root access to the server; this allows you to control the software installed on the machine and so the machine can be used for purposes other than web hosting.
+For example, some people use VPSes to run their Minecraft gaming server; others use them as a cheap(er) alternative to DropBox.
+The disadvantages of VPSes? You share the node with many other people as opposed to a dedicated server and you and you only can use. Many performance issues are a direct result of people abusing their usage of their VPS. Most hosts however do check for the existence of performance issues on their nodes and shutdown VMs that require too much CPU processing cycles or RAM.
+After much research, I went with a US VPS provider instead of a NZ one. Price was a major concern for me as this was for personal stuff and not work. Most local providers were charging between NZD $10 to $20 per month for an OpenVZ 512MB 20GB VM that was simply too small for my needs. I found a relatively good provider in the States that was charging only $30 per year - this price was more palatable to me. While the provider had a few bad online reviews, I decided to take the plunge.
+There were no more nodes available in Los Angeles so I had to settle for another location. Los Angeles is preferable for customers in the Asia/Pacific region due to lower latency.
+Performance wasn&rsquo;t too shabby for the node that I was on.
+root@testvm:~$ wget freevps.us/downloads/bench.sh -O - -o /dev/null|bash
+CPU model :  Intel(R) Xeon(R) CPU E3-1240 V2 @ 3.40GHz
+Number of cores : 4
+CPU frequency :  1600.000 MHz
+Total amount of ram : 2048 MB
+Total amount of swap : 0 MB
+System uptime :   1 day, 3:17,
+Download speed from CacheFly: 44.1MB/s
+Download speed from Coloat, Atlanta GA: 20.0MB/s
+Download speed from Softlayer, Dallas, TX: 6.42MB/s
+Download speed from Linode, Tokyo, JP: 7.34MB/s
+Download speed from i3d.net, NL: 7.73MB/s
+Download speed from Leaseweb, Haarlem, NL: 14.3MB/s
+Download speed from Softlayer, Singapore: 5.16MB/s
+Download speed from Softlayer, Seattle, WA: 15.6MB/s
+Download speed from Softlayer, San Jose, CA: 16.6MB/s
+Download speed from Softlayer, Washington, DC: 75.7MB/s
+I/O speed :  336 MB/s
+All in all, I&rsquo;m a happy camper.">
+<meta name="keywords" content="">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Virtual Private Servers">
+  <meta name="twitter:description" content="I had wanted to experiment with VPS solutions for quite a while now. VPS or virtual private servers is a hosted solution that have many advantages (and disadvantages) to normal web hosting solutions. They give you full root access to the server; this allows you to control the software installed on the machine and so the machine can be used for purposes other than web hosting. For example, some people use VPSes to run their Minecraft gaming server; others use them as a cheap(er) alternative to DropBox. The disadvantages of VPSes? You share the node with many other people as opposed to a dedicated server and you and you only can use. Many performance issues are a direct result of people abusing their usage of their VPS. Most hosts however do check for the existence of performance issues on their nodes and shutdown VMs that require too much CPU processing cycles or RAM. After much research, I went with a US VPS provider instead of a NZ one. Price was a major concern for me as this was for personal stuff and not work. Most local providers were charging between NZD $10 to $20 per month for an OpenVZ 512MB 20GB VM that was simply too small for my needs. I found a relatively good provider in the States that was charging only $30 per year - this price was more palatable to me. While the provider had a few bad online reviews, I decided to take the plunge. There were no more nodes available in Los Angeles so I had to settle for another location. Los Angeles is preferable for customers in the Asia/Pacific region due to lower latency. Performance wasn’t too shabby for the node that I was on. root@testvm:~$ wget freevps.us/downloads/bench.sh -O - -o /dev/null|bash CPU model : Intel(R) Xeon(R) CPU E3-1240 V2 @ 3.40GHz Number of cores : 4 CPU frequency : 1600.000 MHz Total amount of ram : 2048 MB Total amount of swap : 0 MB System uptime : 1 day, 3:17, Download speed from CacheFly: 44.1MB/s Download speed from Coloat, Atlanta GA: 20.0MB/s Download speed from Softlayer, Dallas, TX: 6.42MB/s Download speed from Linode, Tokyo, JP: 7.34MB/s Download speed from i3d.net, NL: 7.73MB/s Download speed from Leaseweb, Haarlem, NL: 14.3MB/s Download speed from Softlayer, Singapore: 5.16MB/s Download speed from Softlayer, Seattle, WA: 15.6MB/s Download speed from Softlayer, San Jose, CA: 16.6MB/s Download speed from Softlayer, Washington, DC: 75.7MB/s I/O speed : 336 MB/s All in all, I’m a happy camper.">
+
+<meta property="og:url" content="https://cmdbit.github.io/posts/2013-07-12-virtual-private-servers/">
+  <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
+  <meta property="og:title" content="Virtual Private Servers">
+  <meta property="og:description" content="I had wanted to experiment with VPS solutions for quite a while now. VPS or virtual private servers is a hosted solution that have many advantages (and disadvantages) to normal web hosting solutions. They give you full root access to the server; this allows you to control the software installed on the machine and so the machine can be used for purposes other than web hosting. For example, some people use VPSes to run their Minecraft gaming server; others use them as a cheap(er) alternative to DropBox. The disadvantages of VPSes? You share the node with many other people as opposed to a dedicated server and you and you only can use. Many performance issues are a direct result of people abusing their usage of their VPS. Most hosts however do check for the existence of performance issues on their nodes and shutdown VMs that require too much CPU processing cycles or RAM. After much research, I went with a US VPS provider instead of a NZ one. Price was a major concern for me as this was for personal stuff and not work. Most local providers were charging between NZD $10 to $20 per month for an OpenVZ 512MB 20GB VM that was simply too small for my needs. I found a relatively good provider in the States that was charging only $30 per year - this price was more palatable to me. While the provider had a few bad online reviews, I decided to take the plunge. There were no more nodes available in Los Angeles so I had to settle for another location. Los Angeles is preferable for customers in the Asia/Pacific region due to lower latency. Performance wasn’t too shabby for the node that I was on. root@testvm:~$ wget freevps.us/downloads/bench.sh -O - -o /dev/null|bash CPU model : Intel(R) Xeon(R) CPU E3-1240 V2 @ 3.40GHz Number of cores : 4 CPU frequency : 1600.000 MHz Total amount of ram : 2048 MB Total amount of swap : 0 MB System uptime : 1 day, 3:17, Download speed from CacheFly: 44.1MB/s Download speed from Coloat, Atlanta GA: 20.0MB/s Download speed from Softlayer, Dallas, TX: 6.42MB/s Download speed from Linode, Tokyo, JP: 7.34MB/s Download speed from i3d.net, NL: 7.73MB/s Download speed from Leaseweb, Haarlem, NL: 14.3MB/s Download speed from Softlayer, Singapore: 5.16MB/s Download speed from Softlayer, Seattle, WA: 15.6MB/s Download speed from Softlayer, San Jose, CA: 16.6MB/s Download speed from Softlayer, Washington, DC: 75.7MB/s I/O speed : 336 MB/s All in all, I’m a happy camper.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2013-07-12T08:37:08+12:00">
+    <meta property="article:modified_time" content="2013-07-12T08:37:08+12:00">
+
+
+
+
+<link rel="canonical" href="https://cmdbit.github.io/posts/2013-07-12-virtual-private-servers/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css" integrity="sha256-9rGzWnsCUhslM49s9Yl1&#43;ZgKbBKEd2P&#43;NaSDB3WM0ec=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.ad48f476275974885bdc03d5251e3cdbe1678c54a63ff772376b0ed2adc468dd.css" integrity="sha256-rUj0didZdIhb3APVJR482&#43;FnjFSmP/dyN2sO0q3EaN0=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://cmdbit.github.io/">
+      Confusing Musings and Wandering Ponderings
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pages/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cmdbit.github.io/posts/2013-07-12-virtual-private-servers/">
+              Virtual Private Servers
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2013-07-12T08:37:08&#43;12:00">
+                July 12, 2013
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/technology/">Technology</a>
+      <span class="separator">•</span>
+    <a href="/categories/personal/">Personal</a></div>
+
+          
+        </div>
+      </header>
+
+      
+
+
+      <div class="post-content">
+        
+        <p>I had wanted to experiment with VPS solutions for quite a while now.
+VPS or virtual private servers is a hosted solution that have many advantages (and disadvantages) to normal web hosting solutions. They give you full root access to the server; this allows you to control the software installed on the machine and so the machine can be used for purposes other than web hosting.
+For example, some people use VPSes to run their Minecraft gaming server; others use them as a cheap(er) alternative to DropBox.
+The disadvantages of VPSes? You share the node with many other people as opposed to a dedicated server and you and you only can use. Many performance issues are a direct result of people abusing their usage of their VPS. Most hosts however do check for the existence of performance issues on their nodes and shutdown VMs that require too much CPU processing cycles or RAM.
+After much research, I went with a US VPS provider instead of a NZ one. Price was a major concern for me as this was for personal stuff and not work. Most local providers were charging between NZD $10 to $20 per month for an OpenVZ 512MB 20GB VM that was simply too small for my needs. I found a relatively good provider in the States that was charging only $30 per year - this price was more palatable to me. While the provider had a few bad online reviews, I decided to take the plunge.
+There were no more nodes available in Los Angeles so I had to settle for another location. Los Angeles is preferable for customers in the Asia/Pacific region due to lower latency.
+Performance wasn&rsquo;t too shabby for the node that I was on.
+root@testvm:~$ wget freevps.us/downloads/bench.sh -O - -o /dev/null|bash
+CPU model :  Intel(R) Xeon(R) CPU E3-1240 V2 @ 3.40GHz
+Number of cores : 4
+CPU frequency :  1600.000 MHz
+Total amount of ram : 2048 MB
+Total amount of swap : 0 MB
+System uptime :   1 day, 3:17,
+Download speed from CacheFly: 44.1MB/s
+Download speed from Coloat, Atlanta GA: 20.0MB/s
+Download speed from Softlayer, Dallas, TX: 6.42MB/s
+Download speed from Linode, Tokyo, JP: 7.34MB/s
+Download speed from i3d.net, NL: 7.73MB/s
+Download speed from Leaseweb, Haarlem, NL: 14.3MB/s
+Download speed from Softlayer, Singapore: 5.16MB/s
+Download speed from Softlayer, Seattle, WA: 15.6MB/s
+Download speed from Softlayer, San Jose, CA: 16.6MB/s
+Download speed from Softlayer, Washington, DC: 75.7MB/s
+I/O speed :  336 MB/s
+All in all, I&rsquo;m a happy camper.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2007 -
+    
+    2026
+     Mark Chang 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

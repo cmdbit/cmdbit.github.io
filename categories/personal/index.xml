@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Personal on Confusing Musings and Wandering Ponderings</title>
+    <link>https://cmdbit.github.io/categories/personal/</link>
+    <description>Recent content in Personal on Confusing Musings and Wandering Ponderings</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Jul 2013 08:37:08 +1200</lastBuildDate>
+    <atom:link href="https://cmdbit.github.io/categories/personal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Virtual Private Servers</title>
+      <link>https://cmdbit.github.io/posts/2013-07-12-virtual-private-servers/</link>
+      <pubDate>Fri, 12 Jul 2013 08:37:08 +1200</pubDate>
+      <guid>https://cmdbit.github.io/posts/2013-07-12-virtual-private-servers/</guid>
+      <description>&lt;p&gt;I had wanted to experiment with VPS solutions for quite a while now.&#xA;VPS or virtual private servers is a hosted solution that have many advantages (and disadvantages) to normal web hosting solutions. They give you full root access to the server; this allows you to control the software installed on the machine and so the machine can be used for purposes other than web hosting.&#xA;For example, some people use VPSes to run their Minecraft gaming server; others use them as a cheap(er) alternative to DropBox.&#xA;The disadvantages of VPSes? You share the node with many other people as opposed to a dedicated server and you and you only can use. Many performance issues are a direct result of people abusing their usage of their VPS. Most hosts however do check for the existence of performance issues on their nodes and shutdown VMs that require too much CPU processing cycles or RAM.&#xA;After much research, I went with a US VPS provider instead of a NZ one. Price was a major concern for me as this was for personal stuff and not work. Most local providers were charging between NZD $10 to $20 per month for an OpenVZ 512MB 20GB VM that was simply too small for my needs. I found a relatively good provider in the States that was charging only $30 per year - this price was more palatable to me. While the provider had a few bad online reviews, I decided to take the plunge.&#xA;There were no more nodes available in Los Angeles so I had to settle for another location. Los Angeles is preferable for customers in the Asia/Pacific region due to lower latency.&#xA;Performance wasn&amp;rsquo;t too shabby for the node that I was on.&#xA;root@testvm:~$ wget freevps.us/downloads/bench.sh -O - -o /dev/null|bash&#xA;CPU model :  Intel(R) Xeon(R) CPU E3-1240 V2 @ 3.40GHz&#xA;Number of cores : 4&#xA;CPU frequency :  1600.000 MHz&#xA;Total amount of ram : 2048 MB&#xA;Total amount of swap : 0 MB&#xA;System uptime :   1 day, 3:17,&#xA;Download speed from CacheFly: 44.1MB/s&#xA;Download speed from Coloat, Atlanta GA: 20.0MB/s&#xA;Download speed from Softlayer, Dallas, TX: 6.42MB/s&#xA;Download speed from Linode, Tokyo, JP: 7.34MB/s&#xA;Download speed from i3d.net, NL: 7.73MB/s&#xA;Download speed from Leaseweb, Haarlem, NL: 14.3MB/s&#xA;Download speed from Softlayer, Singapore: 5.16MB/s&#xA;Download speed from Softlayer, Seattle, WA: 15.6MB/s&#xA;Download speed from Softlayer, San Jose, CA: 16.6MB/s&#xA;Download speed from Softlayer, Washington, DC: 75.7MB/s&#xA;I/O speed :  336 MB/s&#xA;All in all, I&amp;rsquo;m a happy camper.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Moving away from Google&#39;s silo</title>
+      <link>https://cmdbit.github.io/posts/2013-05-16-moving-away-from-googles-silo/</link>
+      <pubDate>Thu, 16 May 2013 20:00:16 +1200</pubDate>
+      <guid>https://cmdbit.github.io/posts/2013-05-16-moving-away-from-googles-silo/</guid>
+      <description>&lt;p&gt;After becoming an ardent fan of Google in the previous year, I had become more and more aware of its reach and control of data. Recent reports on its involvement in data gathering had become quite concerning to me and I was determined to wrest control of my data away from them.&#xA;The last straw came when Google closed down Google Reader. This had become an important source of news for me and its closure meant that I had to look for alternatives. I decided to take this opportunity to take stock of what I had in the company and move the data away.&#xA;Here were the alternatives I found.&#xA;Google Drive - Dropbox&#xA;Google Calendar - DaviCal and Mozilla Thunderbird&#xA;Google Contacts - DaviCal and Mozilla Thunderbird&#xA;Google Chrome - Mozilla Firefox&#xA;Google Reader - TT-RSS reader (self-hosted)&#xA;Google Maps - OpenStreetMaps&#xA;Blogger - Wordpress&#xA;The troublesome part was Google Reader; after searching for alternatives such as Feedly and The GoodReader, I wasn&amp;rsquo;t convinced that they were the right fit for my usage. I did a bit more digging and found TT-RSS which fit my needs perfectly.&#xA;However, it requires self-hosting, installation and configuration which would be way beyond what a normal person would be capable of. This would stop me from recommending it as a alternative to Google Reader.&#xA;I had been quite happy with my choices after running with them for a week or so. A lower reliance for Google services is always a good thing but this is tempered by the fact that I will need to maintain my own services.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ubuntu 10.10 and Virtualbox</title>
+      <link>https://cmdbit.github.io/posts/2010-11-21-ubuntu-10-10-and-virtualbox/</link>
+      <pubDate>Sun, 21 Nov 2010 14:30:00 +1300</pubDate>
+      <guid>https://cmdbit.github.io/posts/2010-11-21-ubuntu-10-10-and-virtualbox/</guid>
+      <description>&lt;p&gt;Finally got the time (and energy) to upgrade my home PC to Maverick Meercat. There seems to be a showstopper issue with Virtualbox and Ubuntu 10.10 in dual-monitor mode when nvidia drivers are installed.Every time that the mouse cursor is moved over the Virtualbox welcome screen, the screen freezes and the user is returned to the GNOME login screen.Looks like I have to downgrade to Lucid Lynx for the time being in order to use VirtualBox.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Finding use for old thin clients</title>
+      <link>https://cmdbit.github.io/posts/2010-06-04-finding-use-for-old-thin-clients/</link>
+      <pubDate>Fri, 04 Jun 2010 14:38:00 +1200</pubDate>
+      <guid>https://cmdbit.github.io/posts/2010-06-04-finding-use-for-old-thin-clients/</guid>
+      <description>&lt;p&gt;I recently found an old Wyse S10 terminal that was built circa 2001. 4 USB ports, 1 VGA port, a 10/100mbps network port as well as a serial port. Not too bad connectivity options for a box that&amp;rsquo;s like 10 times smaller than my computer. Completely no moving parts - the system boots from a flash ROM on the motherboard.Being the Mr Geek that I was, I immediately started to take it apart.The first thing that struck me was that although there was a 44pin IDE connector on the motherboard, there was absolutely no space for a 1.8&amp;quot; SSD or HDD inside the casing. Whatever this thing boots from will have to be external.I did a bit of research and found out that the system &lt;em&gt;can&lt;/em&gt; boot from USB; this setting was present in the BIOS. Getting into the BIOS was another problem, as you have to press the Del key at just the right instant. Eventually I did and so I modified the setting to boot from USB first, PXE second and lastly, the IDE connection.Then came the question of what OS to boot. Actually, which linux distribution was the more pertinent question. In the end, Tiny Core Linux came to mind, and soon enough, TCL was there running on the Wyse terminal in all its glory.I was actually quite impressed with the speed of it, considering the fact that it&amp;rsquo;s running a AMD Geode processor at 366Mhz. No speed demon, but it gets the job done for normal web browing.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Silverstone MFP51 and Linux</title>
+      <link>https://cmdbit.github.io/posts/2010-01-25-silverstone-mfp51-and-linux/</link>
+      <pubDate>Mon, 25 Jan 2010 08:59:00 +1300</pubDate>
+      <guid>https://cmdbit.github.io/posts/2010-01-25-silverstone-mfp51-and-linux/</guid>
+      <description>&lt;p&gt;The Silverstone MFP51 is a multifunction LCD display that fits into an available 5.25&amp;quot; bay. I bought it over a year ago, but only got to fix it into my system yesterday.Since my OS was Linux, the provided CDs were basically useless to me. After the installation, I installed LCDproc, a Linux utility that provided LCD control for displays such as these.One of the reason why Linux proved to be an invaluable OS is the degree of verbosity in the logs. LCDproc required me to define the LCD display type in its configuration file, but nowhere on the Internet did it state what type it was. So dmesg I went &amp;hellip;&#xA;[   21.975982] lirc_imon: Driver for SoundGraph iMON MultiMedia IR/Display, v0.6[   21.976003] lirc_dev: lirc_register_driver: sample_rate: 0[   21.976037] lirc_imon: Registered iMON driver (lirc minor: 0)&#xA;That meant that the Silverstone MFP51 was simply a rebadged iMON display.The whole list of drivers was listed here in /etc/LCDd.conf.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Tweaks for Firefox</title>
+      <link>https://cmdbit.github.io/posts/2009-09-19-tweaks-for-firefox/</link>
+      <pubDate>Sat, 19 Sep 2009 11:59:00 +1200</pubDate>
+      <guid>https://cmdbit.github.io/posts/2009-09-19-tweaks-for-firefox/</guid>
+      <description>&lt;p&gt;I tweaked Firefox on my laptop since I didn&amp;rsquo;t like the default look and behaviour.Here&amp;rsquo;s some of the changes I made :-a. The Silvermel theme. It makes Firefox look &amp;hellip; umm &amp;hellip; really different. :) It can also be applied to Thunderbird as well. b. I hated the way Firefox populates 12 maxcomplete results whenever I typed in a URL. It took up all the real-estate screen space, leaving nothing else to view on my small laptop screen. To reduce that, I changed browser.urlbar.maxRichResults to 3 under about:config in Firefox.c. Entered a master password to prevent people from opening the Options settings and seeing my passwords.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Marvell Yukon crap</title>
+      <link>https://cmdbit.github.io/posts/2009-06-10-marvell-yukon-crap/</link>
+      <pubDate>Wed, 10 Jun 2009 23:09:00 +1200</pubDate>
+      <guid>https://cmdbit.github.io/posts/2009-06-10-marvell-yukon-crap/</guid>
+      <description>&lt;p&gt;I started building my new system up last night since all my parts had arrived from SG, and immediately ran into problems while doing file transfers For some inexplicable reason, the system would lock up and require a physical reboot during these file transfers. When the system is sitting idle, it would be fine.Curious, I did an lspci to see what hardware was on the board.03:00.0 Ethernet controller: Marvell Technology Group Ltd. 88E8056 PCI-E Gigabit Ethernet Controller (rev 14)&lt;em&gt;sigh&lt;/em&gt;. Another piece of crap hardware.The output from dmesg was more interesting.[  430.085997] sky2 eth0: rx error, status 0x740002 length 116[  430.372344] sky2 eth0: rx error, status 0x780002 length 120[  430.374110] sky2 eth0: rx error, status 0x760002 length 118[  430.544242] sky2 eth0: rx error, status 0x760002 length 118[  431.856916] sky2 eth0: rx error, status 0x700002 length 112[  431.861653] sky2 eth0: rx error, status 0x740002 length 116No wonder for the lockups. These rx errors were just resulting in corrupted packets in user space. &lt;em&gt;double sigh&lt;/em&gt;I’m so going to disable all that Marvell onboard NIC on the board. It’s really a pity because the motherboard is a good one, but using it with the NIC just sucks.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

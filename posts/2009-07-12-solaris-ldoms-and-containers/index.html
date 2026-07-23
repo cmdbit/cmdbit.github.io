@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Solaris LDOMs and containers · Confusing Musings and Wandering Ponderings
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Mark Chang">
+<meta name="description" content="Recently, I&rsquo;ve been playing around with Solaris LDOMs on a T2000 loan unit. LDOMs are very much a software extension of the physical hardware domains found in the mid and high range Sun servers. It&rsquo;s quite cool to be able to assign a domain to particular resources on the system, and then start, stop and reboot that domain independent on other domains.One application that I could forsee happening is the application of containers within LDOMs. Containers (or zones), another Solaris peculiarity, are like FreeBSD jails - they allow you to partition in the OS a section that is unaffected by the rest of the OS - a so-called boundary. While this by itself is rather unexciting, the concept of branded zones is quite the reverse.Branded zones allow the emulation of an OS environment. Here comes the real kicker. It is possible to migrate a Solaris 8 machine (with little or no change) and put that into a Solaris 8 container within an LDOM. That means that mulitple old legacy machines running Solaris 8 could be migrated whole-sale into containers in a Solaris 10 machine with no change to application code.Cost and time savings? You betcha &hellip;">
+<meta name="keywords" content="">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Solaris LDOMs and containers">
+  <meta name="twitter:description" content="Recently, I’ve been playing around with Solaris LDOMs on a T2000 loan unit. LDOMs are very much a software extension of the physical hardware domains found in the mid and high range Sun servers. It’s quite cool to be able to assign a domain to particular resources on the system, and then start, stop and reboot that domain independent on other domains.One application that I could forsee happening is the application of containers within LDOMs. Containers (or zones), another Solaris peculiarity, are like FreeBSD jails - they allow you to partition in the OS a section that is unaffected by the rest of the OS - a so-called boundary. While this by itself is rather unexciting, the concept of branded zones is quite the reverse.Branded zones allow the emulation of an OS environment. Here comes the real kicker. It is possible to migrate a Solaris 8 machine (with little or no change) and put that into a Solaris 8 container within an LDOM. That means that mulitple old legacy machines running Solaris 8 could be migrated whole-sale into containers in a Solaris 10 machine with no change to application code.Cost and time savings? You betcha …">
+
+<meta property="og:url" content="https://cmdbit.github.io/posts/2009-07-12-solaris-ldoms-and-containers/">
+  <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
+  <meta property="og:title" content="Solaris LDOMs and containers">
+  <meta property="og:description" content="Recently, I’ve been playing around with Solaris LDOMs on a T2000 loan unit. LDOMs are very much a software extension of the physical hardware domains found in the mid and high range Sun servers. It’s quite cool to be able to assign a domain to particular resources on the system, and then start, stop and reboot that domain independent on other domains.One application that I could forsee happening is the application of containers within LDOMs. Containers (or zones), another Solaris peculiarity, are like FreeBSD jails - they allow you to partition in the OS a section that is unaffected by the rest of the OS - a so-called boundary. While this by itself is rather unexciting, the concept of branded zones is quite the reverse.Branded zones allow the emulation of an OS environment. Here comes the real kicker. It is possible to migrate a Solaris 8 machine (with little or no change) and put that into a Solaris 8 container within an LDOM. That means that mulitple old legacy machines running Solaris 8 could be migrated whole-sale into containers in a Solaris 10 machine with no change to application code.Cost and time savings? You betcha …">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2009-07-12T22:01:00+12:00">
+    <meta property="article:modified_time" content="2009-07-12T22:01:00+12:00">
+
+
+
+
+<link rel="canonical" href="https://cmdbit.github.io/posts/2009-07-12-solaris-ldoms-and-containers/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css" integrity="sha256-9rGzWnsCUhslM49s9Yl1&#43;ZgKbBKEd2P&#43;NaSDB3WM0ec=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.ad48f476275974885bdc03d5251e3cdbe1678c54a63ff772376b0ed2adc468dd.css" integrity="sha256-rUj0didZdIhb3APVJR482&#43;FnjFSmP/dyN2sO0q3EaN0=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://cmdbit.github.io/">
+      Confusing Musings and Wandering Ponderings
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/pages/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cmdbit.github.io/posts/2009-07-12-solaris-ldoms-and-containers/">
+              Solaris LDOMs and containers
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2009-07-12T22:01:00&#43;12:00">
+                July 12, 2009
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/technology/">Technology</a>
+      <span class="separator">•</span>
+    <a href="/categories/business/">Business</a></div>
+
+          
+        </div>
+      </header>
+
+      
+
+
+      <div class="post-content">
+        
+        <p>Recently, I&rsquo;ve been playing around with Solaris LDOMs on a T2000 loan unit. LDOMs are very much a software extension of the physical hardware domains found in the mid and high range Sun servers. It&rsquo;s quite cool to be able to assign a domain to particular resources on the system, and then start, stop and reboot that domain independent on other domains.One application that I could forsee happening is the application of containers within LDOMs. Containers (or zones), another Solaris peculiarity, are like FreeBSD jails - they allow you to partition in the OS a section that is unaffected by the rest of the OS - a so-called boundary. While this by itself is rather unexciting, the concept of branded zones is quite the reverse.Branded zones allow the emulation of an OS environment. Here comes the real kicker. It is possible to migrate a Solaris 8 machine (with little or no change) and put that into a Solaris 8 container within an LDOM. That means that mulitple old legacy machines running Solaris 8 could be migrated whole-sale into containers in a Solaris 10 machine with no change to application code.Cost and time savings? You betcha &hellip;</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2007 -
+    
+    2026
+     Mark Chang 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>
