@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Solaris 11 Express upgrade">
   <meta name="twitter:description" content="I had to upgrade one of our customer’s NAS units from Opensolaris 2009.06 to Solaris 11 Express during the Christmas holidays. Solaris 11 Express is build 151, and Opensolaris 2009.06 is build 111.It was actually a painless task; it’s well documentated in the release notes, and is one of the supported upgrade paths from Opensolaris 2009.06. I needed to upgrade to build 134b as an intermediate step along the way though.However, like all IT upgrades, there were a few chinks …a. No preservation of network linksThe upgrade process did not preserve the bonded network interfaces. I had to redo the entire dladm thingie. Quite trivial, but the upgrade from Opensolaris 2009.06 to v134b preserved that, so why didn’t the upgrade from v134b to Solaris 11 Express?b. iSCSIApparently, the normal ISCSI command “zfs set shareiscsi=on zpool01” is no longer available in Solaris 11 Express. In fact, the property is no longer there …. You will have to enable COMSTAR and use the commands itadm, sdbadm and stmfadm to configure the LUN target and add the zvol to that target. It’s quite trivial, but I would have thought that everything (like SMB and NFS) was integrated with ZFS.c. /etc/default/nfsNo more of that /etc/default/nfs file. Everything is now managed through sharectl. So in order to see the properties of NFS, you will have to issue the command “sharectl get nfs”.I was impressed with Solaris 11 Express, notwithstanding these issues, but I am beginning to wonder what Solaris will be like under Oracle’s tenure.">
 
-<meta property="og:url" content="https://cmdbit.github.io/posts/2011-01-02-solaris-11-express-upgrade/">
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2011-01-02-solaris-11-express-upgrade/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Solaris 11 Express upgrade">
   <meta property="og:description" content="I had to upgrade one of our customer’s NAS units from Opensolaris 2009.06 to Solaris 11 Express during the Christmas holidays. Solaris 11 Express is build 151, and Opensolaris 2009.06 is build 111.It was actually a painless task; it’s well documentated in the release notes, and is one of the supported upgrade paths from Opensolaris 2009.06. I needed to upgrade to build 134b as an intermediate step along the way though.However, like all IT upgrades, there were a few chinks …a. No preservation of network linksThe upgrade process did not preserve the bonded network interfaces. I had to redo the entire dladm thingie. Quite trivial, but the upgrade from Opensolaris 2009.06 to v134b preserved that, so why didn’t the upgrade from v134b to Solaris 11 Express?b. iSCSIApparently, the normal ISCSI command “zfs set shareiscsi=on zpool01” is no longer available in Solaris 11 Express. In fact, the property is no longer there …. You will have to enable COMSTAR and use the commands itadm, sdbadm and stmfadm to configure the LUN target and add the zvol to that target. It’s quite trivial, but I would have thought that everything (like SMB and NFS) was integrated with ZFS.c. /etc/default/nfsNo more of that /etc/default/nfs file. Everything is now managed through sharectl. So in order to see the properties of NFS, you will have to issue the command “sharectl get nfs”.I was impressed with Solaris 11 Express, notwithstanding these issues, but I am beginning to wonder what Solaris will be like under Oracle’s tenure.">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.github.io/posts/2011-01-02-solaris-11-express-upgrade/">
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2011-01-02-solaris-11-express-upgrade/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.github.io/">
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -117,7 +117,7 @@
         
           
             <li class="navigation-item">
-              <a class="navigation-link " href="/pages/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.github.io/posts/2011-01-02-solaris-11-express-upgrade/">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2011-01-02-solaris-11-express-upgrade/">
               Solaris 11 Express upgrade
             </a>
           </h1>

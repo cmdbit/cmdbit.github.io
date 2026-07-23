@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Tape autoloader commandline control">
   <meta name="twitter:description" content="I recently discovered a new toy while playing around with the tape autoloader in one of my projects.The backup software that we bought had a child application that couldn’t work on Solaris x86, which is really dumb considering the installed x86 base out there. I was left to find an alternative.I decided to script out the backup routines, using only GNU Tar and nothing else. This presented a huge problem. How was I to control the tape library using nothing else but commandline applications? The mt command does not allow control of the tape autoloader at all, and there was a web management interface for the autoloader, it’s not really desirable where doing bash scripting is involved.Enter MTX. MTX is a commandline application that allows control of the tape autoloader instead of the usual control from the application. Which means that scripting, etc, etc is made so much easier.I downloaded the necessary packages need for installation from SunFreeware.com. The install routines were simple and trivial and in no time, I had mtx running.bash-3.00# mtx -f /dev/changer status | less Storage Changer /dev/changer:1 Drives, 24 Slots ( 0 Import/Export )Data Transfer Element 0:Full (Storage Element 1 Loaded):VolumeTag = CLN012L4 Storage Element 1:Empty Storage Element 2:Full :VolumeTag=CLN013L4 Storage Element 3:Full :VolumeTag=CLN011L4 Storage Element 4:Full :VolumeTag=CLN003L4 Storage Element 5:Full :VolumeTag=CLN010L4 Storage Element 6:Full :VolumeTag=CLN014L4 Storage Element 7:Full :VolumeTag=CLN005L4 Storage Element 8:Full :VolumeTag=CLN002L4 Storage Element 9:Full :VolumeTag=CLN006L4 Storage Element 10:Full :VolumeTag=CLN015L4 Storage Element 11:Full :VolumeTag=CLN004L4 Storage Element 12:Full :VolumeTag=CLN001L4 Storage Element 13:Full :VolumeTag=CLN016L4 Storage Element 14:Full :VolumeTag=CLN019L4 Storage Element 15:Full :VolumeTag=CLN009L4 Storage Element 16:Full :VolumeTag=CLN018L4 Storage Element 17:Full :VolumeTag=CLN008L4 Storage Element 18:Full :VolumeTag=CLN007L4 Storage Element 19:Full :VolumeTag=CLN020L4 Storage Element 20:Full :VolumeTag=CLN017L4 Storage Element 21:Empty Storage Element 22:Empty Storage Element 23:Empty Storage Element 24:EmptyThat was a wonderful sight to behold.">
 
-<meta property="og:url" content="https://cmdbit.github.io/posts/2009-02-05-tape-autoloader-commandline-control/">
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-02-05-tape-autoloader-commandline-control/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Tape autoloader commandline control">
   <meta property="og:description" content="I recently discovered a new toy while playing around with the tape autoloader in one of my projects.The backup software that we bought had a child application that couldn’t work on Solaris x86, which is really dumb considering the installed x86 base out there. I was left to find an alternative.I decided to script out the backup routines, using only GNU Tar and nothing else. This presented a huge problem. How was I to control the tape library using nothing else but commandline applications? The mt command does not allow control of the tape autoloader at all, and there was a web management interface for the autoloader, it’s not really desirable where doing bash scripting is involved.Enter MTX. MTX is a commandline application that allows control of the tape autoloader instead of the usual control from the application. Which means that scripting, etc, etc is made so much easier.I downloaded the necessary packages need for installation from SunFreeware.com. The install routines were simple and trivial and in no time, I had mtx running.bash-3.00# mtx -f /dev/changer status | less Storage Changer /dev/changer:1 Drives, 24 Slots ( 0 Import/Export )Data Transfer Element 0:Full (Storage Element 1 Loaded):VolumeTag = CLN012L4 Storage Element 1:Empty Storage Element 2:Full :VolumeTag=CLN013L4 Storage Element 3:Full :VolumeTag=CLN011L4 Storage Element 4:Full :VolumeTag=CLN003L4 Storage Element 5:Full :VolumeTag=CLN010L4 Storage Element 6:Full :VolumeTag=CLN014L4 Storage Element 7:Full :VolumeTag=CLN005L4 Storage Element 8:Full :VolumeTag=CLN002L4 Storage Element 9:Full :VolumeTag=CLN006L4 Storage Element 10:Full :VolumeTag=CLN015L4 Storage Element 11:Full :VolumeTag=CLN004L4 Storage Element 12:Full :VolumeTag=CLN001L4 Storage Element 13:Full :VolumeTag=CLN016L4 Storage Element 14:Full :VolumeTag=CLN019L4 Storage Element 15:Full :VolumeTag=CLN009L4 Storage Element 16:Full :VolumeTag=CLN018L4 Storage Element 17:Full :VolumeTag=CLN008L4 Storage Element 18:Full :VolumeTag=CLN007L4 Storage Element 19:Full :VolumeTag=CLN020L4 Storage Element 20:Full :VolumeTag=CLN017L4 Storage Element 21:Empty Storage Element 22:Empty Storage Element 23:Empty Storage Element 24:EmptyThat was a wonderful sight to behold.">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.github.io/posts/2009-02-05-tape-autoloader-commandline-control/">
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-02-05-tape-autoloader-commandline-control/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.github.io/">
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -117,7 +117,7 @@
         
           
             <li class="navigation-item">
-              <a class="navigation-link " href="/pages/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.github.io/posts/2009-02-05-tape-autoloader-commandline-control/">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-02-05-tape-autoloader-commandline-control/">
               Tape autoloader commandline control
             </a>
           </h1>

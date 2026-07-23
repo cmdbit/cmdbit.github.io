@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Confusing Musings and Wandering Ponderings</title>
-    <link>https://cmdbit.github.io/categories/</link>
+    <link>https://cmdbit.codeberg.page/categories/</link>
     <description>Recent content in Categories on Confusing Musings and Wandering Ponderings</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 05 Feb 2025 21:52:29 +1300</lastBuildDate>
-    <atom:link href="https://cmdbit.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://cmdbit.codeberg.page/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Technology</title>
-      <link>https://cmdbit.github.io/categories/technology/</link>
+      <link>https://cmdbit.codeberg.page/categories/technology/</link>
       <pubDate>Wed, 05 Feb 2025 21:52:29 +1300</pubDate>
-      <guid>https://cmdbit.github.io/categories/technology/</guid>
+      <guid>https://cmdbit.codeberg.page/categories/technology/</guid>
       <description></description>
     </item>
     <item>
       <title>Business</title>
-      <link>https://cmdbit.github.io/categories/business/</link>
+      <link>https://cmdbit.codeberg.page/categories/business/</link>
       <pubDate>Thu, 01 Oct 2020 10:45:00 +1200</pubDate>
-      <guid>https://cmdbit.github.io/categories/business/</guid>
+      <guid>https://cmdbit.codeberg.page/categories/business/</guid>
       <description></description>
     </item>
     <item>
       <title>Apple</title>
-      <link>https://cmdbit.github.io/categories/apple/</link>
+      <link>https://cmdbit.codeberg.page/categories/apple/</link>
       <pubDate>Mon, 28 Sep 2020 10:45:00 +1200</pubDate>
-      <guid>https://cmdbit.github.io/categories/apple/</guid>
+      <guid>https://cmdbit.codeberg.page/categories/apple/</guid>
       <description></description>
     </item>
     <item>
       <title>Personal</title>
-      <link>https://cmdbit.github.io/categories/personal/</link>
+      <link>https://cmdbit.codeberg.page/categories/personal/</link>
       <pubDate>Fri, 12 Jul 2013 08:37:08 +1200</pubDate>
-      <guid>https://cmdbit.github.io/categories/personal/</guid>
+      <guid>https://cmdbit.codeberg.page/categories/personal/</guid>
       <description></description>
     </item>
     <item>
       <title>Tidbits</title>
-      <link>https://cmdbit.github.io/categories/tidbits/</link>
+      <link>https://cmdbit.codeberg.page/categories/tidbits/</link>
       <pubDate>Thu, 04 Jun 2009 12:27:00 +1200</pubDate>
-      <guid>https://cmdbit.github.io/categories/tidbits/</guid>
+      <guid>https://cmdbit.codeberg.page/categories/tidbits/</guid>
       <description></description>
     </item>
   </channel>

@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="LDAP issues">
   <meta name="twitter:description" content="In the current project I’m leading right now, I was faced with an interesting issue - integrating a Solaris LDAP client with a Sun Enterprise Directory server running on SUSE Linux 10 SP1.Now, Solaris’ LDAP client behaves very differently from Linux’s OpenLDAP client, so much so as to warrant a whole treatment on the subject. But that’s for another day.Anyway, I took a look at the log files.findBaseDN: ldap not runningfindBaseDN: calling __ns_ldap_default_config()found 1 namingcontextsfindBaseDN: __ns_ldap_list(NULL,&#34;(&amp;(objectclass=nisDomainObject)(nisdomain=xxx.xxxx.nz))“rootDN[0] dc=xxxx,dc=xxxxx,dc=nzNOTFOUND:Could not find the nisDomainObject for DN dc=xxxx,dc=xxxx,dc=nzfound_cxt = -1findBaseDN: Err exitFailed to find defaultSearchBase for domain xxxx.xxxx.nzsnippet&gt;Darn, the stupid LDAP client expects to find an NIS domain first BEFORE parsing it to reveal the LDAP domain. sighI then inserted the attributes that were required (nisDomainObject key and nisDomain attribute) into the baseDN.And presto,bash-3.00# ldapclient manual \ &gt; -a domainName=xxxxx.xxxx.nz \ &gt; -a defaultSearchBase=dc=xxxx,dc=xxxx,dc=nz \ &gt; 10.x.x.xxSystem successfully configured#&gt;What a lovely result.">
 
-<meta property="og:url" content="https://cmdbit.github.io/posts/2008-12-04-ldap-issues/">
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2008-12-04-ldap-issues/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="LDAP issues">
   <meta property="og:description" content="In the current project I’m leading right now, I was faced with an interesting issue - integrating a Solaris LDAP client with a Sun Enterprise Directory server running on SUSE Linux 10 SP1.Now, Solaris’ LDAP client behaves very differently from Linux’s OpenLDAP client, so much so as to warrant a whole treatment on the subject. But that’s for another day.Anyway, I took a look at the log files.findBaseDN: ldap not runningfindBaseDN: calling __ns_ldap_default_config()found 1 namingcontextsfindBaseDN: __ns_ldap_list(NULL,&#34;(&amp;(objectclass=nisDomainObject)(nisdomain=xxx.xxxx.nz))“rootDN[0] dc=xxxx,dc=xxxxx,dc=nzNOTFOUND:Could not find the nisDomainObject for DN dc=xxxx,dc=xxxx,dc=nzfound_cxt = -1findBaseDN: Err exitFailed to find defaultSearchBase for domain xxxx.xxxx.nzsnippet&gt;Darn, the stupid LDAP client expects to find an NIS domain first BEFORE parsing it to reveal the LDAP domain. sighI then inserted the attributes that were required (nisDomainObject key and nisDomain attribute) into the baseDN.And presto,bash-3.00# ldapclient manual \ &gt; -a domainName=xxxxx.xxxx.nz \ &gt; -a defaultSearchBase=dc=xxxx,dc=xxxx,dc=nz \ &gt; 10.x.x.xxSystem successfully configured#&gt;What a lovely result.">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.github.io/posts/2008-12-04-ldap-issues/">
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2008-12-04-ldap-issues/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.github.io/">
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -117,7 +117,7 @@
         
           
             <li class="navigation-item">
-              <a class="navigation-link " href="/pages/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.github.io/posts/2008-12-04-ldap-issues/">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2008-12-04-ldap-issues/">
               LDAP issues
             </a>
           </h1>

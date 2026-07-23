@@ -29,7 +29,7 @@ process name: smbdstack pointer for thread ffffff10d74f98e0: ffffff00109a0dc0[ f
   <meta name="twitter:title" content="Core dumps in Solaris and mdb">
   <meta name="twitter:description" content="Today I was presented with a situation where I needed to find out why a particular system had crashed and rebooted at a customer site by itself. Server load was normal.The system had generated core dumps so I took them out. STORAGE# lsbounds unix.0 unix.1 vmcore.0 vmcore.1STORAGE# file *.1unix.1: ELF 64-bit LSB executable AMD64 Version 1, statically linked, not stripped, no debugging information availablevmcore.1: SunOS 5.11 ak/generic@2009.04.10.1.1,1-1.9 64-bit Intel crash dump from ‘STORAGE’STORAGE# I parsed them through mdb. STORAGE# mdb -k unix.1 vmcore.1Loading modules: [ unix genunix specfs dtrace mac cpu.generic uppc pcplusmp scsi_vhci zfs mpt sd fcp fctl emlxs qlc sockfs ip hook neti sctp arp usba stmf lofs idm fcip md cpc nca random crypto smbsrv nfs logindmux ptm ufs ii nsctl sppp rdc sdbc sv nsmb ]&gt; ::statusdebugging crash dump vmcore.1 (64-bit) from STORAGEoperating system: 5.11 ak/generic@2009.04.10.1.1,1-1.9 (i86pc)panic message: mutex_enter: bad mutex, lp=ffffff10f8c656b8 owner=ffffff00109a0f10 thread=ffffff000f50dc60dump content: kernel pages only&gt; ::showrevHostname: STORAGERelease: 5.11Kernel architecture: i86pcApplication architecture: amd64Kernel version: SunOS 5.11 i86pc ak/generic@2009.04.10.1.1,1-1.9Platform: i86pc&gt; ::panicinfo cpu 1 thread ffffff00109a0f10 messagemutex_enter: bad mutex, lp=ffffff10f8c656b8 owner=ffffff00109a0f10 thread=ffffff000f50dc60 rdi fffffffffb91e2e0 rsi ffffff000f50d8b0 rdx ffffff10f8c656b8 rcx ffffff00109a0f10 r8 ffffff000f50d800 r9 ffffff000f50d8f0 rax 0 rbx 1 rbp ffffff000f50d8e0 r10 ffffff10f8c656b0 r10 ffffff10f8c656b0 r11 ffffff000f50d730 r12 fffffffffb91e2c8 r13 ffffff10f8c656b8 r14 ffffffff r15 ffffff10f8c656b0 fsbase 0 gsbase ffffff10d444f500 ds 4b es 4b fs 0 gs 1c3 trapno 0 err 0 rip fffffffffb84f7e0 cs 30 rflags 246 rsp ffffff000f50d7f8 ss 38 gdt_hi 0 gdt_lo 100001ef idt_hi 0 idt_lo 50000fff ldt 0 task 70 cr0 8005003b cr2 fc520000 cr3 a000000 cr4 6f8&gt; From the output, I knew that the offending thread was located at ffffff00109a0f10. All I had to do now was to find out what was the process owning it.I copied a script (that I found on the Internet) to help with printing out the information of the threads into a file in /tmp. STORAGE# cat ./findstack.vmcore.sh#!/usr/bin/env shecho “::ps” | mdb -k /var/ak/core/unix.1 /var/ak/core/vmcore.1 | \ nawk ‘$8 !~ /ADDR/ {print $8&#34; “$NF}’ &gt; /tmp/.core.$$cat /dev/null &gt; /tmp/core.$$while read ps; do echo “process name: echo ${ps} | nawk &#39;{print $2}&#39;” » /tmp/core.$$ echo ${ps} | nawk ‘{print $1”::walk thread | ::findstack&#34;}’ | \ mdb /var/ak/core/unix.1 /var/ak/core/vmcore.1 » /tmp/core.$$ echo » /tmp/core.$$done \rm /tmp/.core.$$exit 0 Ahh, yes … I finally managed to pin it down. process name: smbdstack pointer for thread ffffff10d74f98e0: ffffff00109a0dc0[ ffffff00109a0dc0 _resume_from_idle&#43;0xf1() ] ffffff00109a0df0 swtch&#43;0x160() ffffff00109a0e50 cv_wait_sig_swap_core&#43;0x170() ffffff00109a0e70 cv_wait_sig_swap&#43;0x18() ffffff00109a0ec0 sigsuspend&#43;0xeb() ffffff00109a0f10 sys_syscall32&#43;0x101()">
 
-<meta property="og:url" content="https://cmdbit.github.io/posts/2009-08-26-core-dumps-in-solaris-and-mdb/">
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-08-26-core-dumps-in-solaris-and-mdb/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Core dumps in Solaris and mdb">
   <meta property="og:description" content="Today I was presented with a situation where I needed to find out why a particular system had crashed and rebooted at a customer site by itself. Server load was normal.The system had generated core dumps so I took them out. STORAGE# lsbounds unix.0 unix.1 vmcore.0 vmcore.1STORAGE# file *.1unix.1: ELF 64-bit LSB executable AMD64 Version 1, statically linked, not stripped, no debugging information availablevmcore.1: SunOS 5.11 ak/generic@2009.04.10.1.1,1-1.9 64-bit Intel crash dump from ‘STORAGE’STORAGE# I parsed them through mdb. STORAGE# mdb -k unix.1 vmcore.1Loading modules: [ unix genunix specfs dtrace mac cpu.generic uppc pcplusmp scsi_vhci zfs mpt sd fcp fctl emlxs qlc sockfs ip hook neti sctp arp usba stmf lofs idm fcip md cpc nca random crypto smbsrv nfs logindmux ptm ufs ii nsctl sppp rdc sdbc sv nsmb ]&gt; ::statusdebugging crash dump vmcore.1 (64-bit) from STORAGEoperating system: 5.11 ak/generic@2009.04.10.1.1,1-1.9 (i86pc)panic message: mutex_enter: bad mutex, lp=ffffff10f8c656b8 owner=ffffff00109a0f10 thread=ffffff000f50dc60dump content: kernel pages only&gt; ::showrevHostname: STORAGERelease: 5.11Kernel architecture: i86pcApplication architecture: amd64Kernel version: SunOS 5.11 i86pc ak/generic@2009.04.10.1.1,1-1.9Platform: i86pc&gt; ::panicinfo cpu 1 thread ffffff00109a0f10 messagemutex_enter: bad mutex, lp=ffffff10f8c656b8 owner=ffffff00109a0f10 thread=ffffff000f50dc60 rdi fffffffffb91e2e0 rsi ffffff000f50d8b0 rdx ffffff10f8c656b8 rcx ffffff00109a0f10 r8 ffffff000f50d800 r9 ffffff000f50d8f0 rax 0 rbx 1 rbp ffffff000f50d8e0 r10 ffffff10f8c656b0 r10 ffffff10f8c656b0 r11 ffffff000f50d730 r12 fffffffffb91e2c8 r13 ffffff10f8c656b8 r14 ffffffff r15 ffffff10f8c656b0 fsbase 0 gsbase ffffff10d444f500 ds 4b es 4b fs 0 gs 1c3 trapno 0 err 0 rip fffffffffb84f7e0 cs 30 rflags 246 rsp ffffff000f50d7f8 ss 38 gdt_hi 0 gdt_lo 100001ef idt_hi 0 idt_lo 50000fff ldt 0 task 70 cr0 8005003b cr2 fc520000 cr3 a000000 cr4 6f8&gt; From the output, I knew that the offending thread was located at ffffff00109a0f10. All I had to do now was to find out what was the process owning it.I copied a script (that I found on the Internet) to help with printing out the information of the threads into a file in /tmp. STORAGE# cat ./findstack.vmcore.sh#!/usr/bin/env shecho “::ps” | mdb -k /var/ak/core/unix.1 /var/ak/core/vmcore.1 | \ nawk ‘$8 !~ /ADDR/ {print $8&#34; “$NF}’ &gt; /tmp/.core.$$cat /dev/null &gt; /tmp/core.$$while read ps; do echo “process name: echo ${ps} | nawk &#39;{print $2}&#39;” » /tmp/core.$$ echo ${ps} | nawk ‘{print $1”::walk thread | ::findstack&#34;}’ | \ mdb /var/ak/core/unix.1 /var/ak/core/vmcore.1 » /tmp/core.$$ echo » /tmp/core.$$done \rm /tmp/.core.$$exit 0 Ahh, yes … I finally managed to pin it down. process name: smbdstack pointer for thread ffffff10d74f98e0: ffffff00109a0dc0[ ffffff00109a0dc0 _resume_from_idle&#43;0xf1() ] ffffff00109a0df0 swtch&#43;0x160() ffffff00109a0e50 cv_wait_sig_swap_core&#43;0x170() ffffff00109a0e70 cv_wait_sig_swap&#43;0x18() ffffff00109a0ec0 sigsuspend&#43;0xeb() ffffff00109a0f10 sys_syscall32&#43;0x101()">
@@ -42,7 +42,7 @@ process name: smbdstack pointer for thread ffffff10d74f98e0: ffffff00109a0dc0[ f
 
 
 
-<link rel="canonical" href="https://cmdbit.github.io/posts/2009-08-26-core-dumps-in-solaris-and-mdb/">
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-08-26-core-dumps-in-solaris-and-mdb/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -111,7 +111,7 @@ process name: smbdstack pointer for thread ffffff10d74f98e0: ffffff00109a0dc0[ f
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.github.io/">
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -124,7 +124,7 @@ process name: smbdstack pointer for thread ffffff10d74f98e0: ffffff00109a0dc0[ f
         
           
             <li class="navigation-item">
-              <a class="navigation-link " href="/pages/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
@@ -146,7 +146,7 @@ process name: smbdstack pointer for thread ffffff10d74f98e0: ffffff00109a0dc0[ f
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.github.io/posts/2009-08-26-core-dumps-in-solaris-and-mdb/">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-08-26-core-dumps-in-solaris-and-mdb/">
               Core dumps in Solaris and mdb
             </a>
           </h1>

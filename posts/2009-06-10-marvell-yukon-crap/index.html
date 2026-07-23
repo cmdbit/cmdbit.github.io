@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Marvell Yukon crap">
   <meta name="twitter:description" content="I started building my new system up last night since all my parts had arrived from SG, and immediately ran into problems while doing file transfers For some inexplicable reason, the system would lock up and require a physical reboot during these file transfers. When the system is sitting idle, it would be fine.Curious, I did an lspci to see what hardware was on the board.03:00.0 Ethernet controller: Marvell Technology Group Ltd. 88E8056 PCI-E Gigabit Ethernet Controller (rev 14)sigh. Another piece of crap hardware.The output from dmesg was more interesting.[ 430.085997] sky2 eth0: rx error, status 0x740002 length 116[ 430.372344] sky2 eth0: rx error, status 0x780002 length 120[ 430.374110] sky2 eth0: rx error, status 0x760002 length 118[ 430.544242] sky2 eth0: rx error, status 0x760002 length 118[ 431.856916] sky2 eth0: rx error, status 0x700002 length 112[ 431.861653] sky2 eth0: rx error, status 0x740002 length 116No wonder for the lockups. These rx errors were just resulting in corrupted packets in user space. double sighI’m so going to disable all that Marvell onboard NIC on the board. It’s really a pity because the motherboard is a good one, but using it with the NIC just sucks.">
 
-<meta property="og:url" content="https://cmdbit.github.io/posts/2009-06-10-marvell-yukon-crap/">
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-06-10-marvell-yukon-crap/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Marvell Yukon crap">
   <meta property="og:description" content="I started building my new system up last night since all my parts had arrived from SG, and immediately ran into problems while doing file transfers For some inexplicable reason, the system would lock up and require a physical reboot during these file transfers. When the system is sitting idle, it would be fine.Curious, I did an lspci to see what hardware was on the board.03:00.0 Ethernet controller: Marvell Technology Group Ltd. 88E8056 PCI-E Gigabit Ethernet Controller (rev 14)sigh. Another piece of crap hardware.The output from dmesg was more interesting.[ 430.085997] sky2 eth0: rx error, status 0x740002 length 116[ 430.372344] sky2 eth0: rx error, status 0x780002 length 120[ 430.374110] sky2 eth0: rx error, status 0x760002 length 118[ 430.544242] sky2 eth0: rx error, status 0x760002 length 118[ 431.856916] sky2 eth0: rx error, status 0x700002 length 112[ 431.861653] sky2 eth0: rx error, status 0x740002 length 116No wonder for the lockups. These rx errors were just resulting in corrupted packets in user space. double sighI’m so going to disable all that Marvell onboard NIC on the board. It’s really a pity because the motherboard is a good one, but using it with the NIC just sucks.">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.github.io/posts/2009-06-10-marvell-yukon-crap/">
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-06-10-marvell-yukon-crap/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.github.io/">
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -117,7 +117,7 @@
         
           
             <li class="navigation-item">
-              <a class="navigation-link " href="/pages/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.github.io/posts/2009-06-10-marvell-yukon-crap/">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-06-10-marvell-yukon-crap/">
               Marvell Yukon crap
             </a>
           </h1>

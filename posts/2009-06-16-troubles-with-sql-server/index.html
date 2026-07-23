@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Troubles with SQL Server">
   <meta name="twitter:description" content="I had a lot of fun today with SQL Server 2005. One of my colleagues received an urgent phonecall from an IT manager from this company. The guy on the other end had a frantic tone to his voice, and I soon learned why - his database Server had crashed, and users were unable to access the Point-of-Sales application which depended on the database server. Naturally, the first thing he did was to call us - his IT point of contact.Unfortunately for my colleague, he didn’t have any experience with SQL Server at all, and so he referred the problem to me. He literally pulled me (and my chair) and wheeled me to his table - I gave him a dirty look as he was doing that. :) I was in the middle of decoding some permissions issue at my client’s place, and which took a bit of concentration to do, so of course I was a little annoyed …. grin.He proceeded to explain the problem to me. I asked him one question.Me : How did the server crash?Colleague : The server was doing a reboot which was forced by Windows Update. It crashed while loading the device drivers.Me : sighLuckily for me, I do have experience with MS SQL Server from projects with my previous company. Most of them were using MS SQL Server 2000, and 2005 shouldn’t that much of a difference.I then proceeded to check the mdf and ldf files holding the application data. All good. That meant that I could unregister the existing database and reattach the files back without loosing any data in the process. One thing which I had stressed to him (and even in my previous company) was that we as the systems integrator are responsible for data integrity and not the data itself. There is definitely a difference between the 2, and we cannot be held liable for the latter.I used EMS SQL Manager liteware to restore the databases after checking for free space on the HDD. It was very quick - 5 minutes later, our client was up and running. I checked the transactional logs, and funnily enough, nothing seemed amiss. He didn’t even call us back for the rest of the day.And I got scolded by my colleague for performing the fix so fast that he couldn’t watch and learn what I was doing. Heh heh … sigh">
 
-<meta property="og:url" content="https://cmdbit.github.io/posts/2009-06-16-troubles-with-sql-server/">
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-06-16-troubles-with-sql-server/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Troubles with SQL Server">
   <meta property="og:description" content="I had a lot of fun today with SQL Server 2005. One of my colleagues received an urgent phonecall from an IT manager from this company. The guy on the other end had a frantic tone to his voice, and I soon learned why - his database Server had crashed, and users were unable to access the Point-of-Sales application which depended on the database server. Naturally, the first thing he did was to call us - his IT point of contact.Unfortunately for my colleague, he didn’t have any experience with SQL Server at all, and so he referred the problem to me. He literally pulled me (and my chair) and wheeled me to his table - I gave him a dirty look as he was doing that. :) I was in the middle of decoding some permissions issue at my client’s place, and which took a bit of concentration to do, so of course I was a little annoyed …. grin.He proceeded to explain the problem to me. I asked him one question.Me : How did the server crash?Colleague : The server was doing a reboot which was forced by Windows Update. It crashed while loading the device drivers.Me : sighLuckily for me, I do have experience with MS SQL Server from projects with my previous company. Most of them were using MS SQL Server 2000, and 2005 shouldn’t that much of a difference.I then proceeded to check the mdf and ldf files holding the application data. All good. That meant that I could unregister the existing database and reattach the files back without loosing any data in the process. One thing which I had stressed to him (and even in my previous company) was that we as the systems integrator are responsible for data integrity and not the data itself. There is definitely a difference between the 2, and we cannot be held liable for the latter.I used EMS SQL Manager liteware to restore the databases after checking for free space on the HDD. It was very quick - 5 minutes later, our client was up and running. I checked the transactional logs, and funnily enough, nothing seemed amiss. He didn’t even call us back for the rest of the day.And I got scolded by my colleague for performing the fix so fast that he couldn’t watch and learn what I was doing. Heh heh … sigh">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.github.io/posts/2009-06-16-troubles-with-sql-server/">
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-06-16-troubles-with-sql-server/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.github.io/">
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -117,7 +117,7 @@
         
           
             <li class="navigation-item">
-              <a class="navigation-link " href="/pages/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.github.io/posts/2009-06-16-troubles-with-sql-server/">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-06-16-troubles-with-sql-server/">
               Troubles with SQL Server
             </a>
           </h1>

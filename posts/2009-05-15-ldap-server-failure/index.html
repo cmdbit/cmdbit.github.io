@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="LDAP Server failure">
   <meta name="twitter:description" content="One of my customer sites experienced a catastrophic server failure, with the primary LDAP authentication server going down first and the rest daisy-chaining after that.A quick look at the message logs didn’t reveal anything unusual, and restores from backups didn’t help at all. I began to suspect something wrong with the program’s databases, and deleted them away, and recreated them after backing up the customer’s LDAP datastores on the secondary LDAP server.Voila. But that was after a whole day of deciphering where it went wrong.A few lessons which I’ve learnt along the way.1. It’s never good to try to restore from backup immediately, but it does pay to understand the problem and to rectify it.2. A secondary LDAP server is a must for any site. That was the saving grace and provided me the means to restore the site quickly.3. It’s not good to do a backup of the LDAP server through an export of the LDIF file. It’s a lot better to backup the entire directory server instance.Hope it won’t happen again.">
 
-<meta property="og:url" content="https://cmdbit.github.io/posts/2009-05-15-ldap-server-failure/">
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-05-15-ldap-server-failure/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="LDAP Server failure">
   <meta property="og:description" content="One of my customer sites experienced a catastrophic server failure, with the primary LDAP authentication server going down first and the rest daisy-chaining after that.A quick look at the message logs didn’t reveal anything unusual, and restores from backups didn’t help at all. I began to suspect something wrong with the program’s databases, and deleted them away, and recreated them after backing up the customer’s LDAP datastores on the secondary LDAP server.Voila. But that was after a whole day of deciphering where it went wrong.A few lessons which I’ve learnt along the way.1. It’s never good to try to restore from backup immediately, but it does pay to understand the problem and to rectify it.2. A secondary LDAP server is a must for any site. That was the saving grace and provided me the means to restore the site quickly.3. It’s not good to do a backup of the LDAP server through an export of the LDIF file. It’s a lot better to backup the entire directory server instance.Hope it won’t happen again.">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.github.io/posts/2009-05-15-ldap-server-failure/">
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-05-15-ldap-server-failure/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.github.io/">
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -117,7 +117,7 @@
         
           
             <li class="navigation-item">
-              <a class="navigation-link " href="/pages/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.github.io/posts/2009-05-15-ldap-server-failure/">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-05-15-ldap-server-failure/">
               LDAP Server failure
             </a>
           </h1>

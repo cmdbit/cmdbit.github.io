@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="Sun Storage 7110 update">
   <meta name="twitter:description" content="Ahh … I finally managed to find the solution to that storage issue I was facing at Te Puke.The Sun Storage 7110 was running the Solaris CIFS service which enabled Windows machines to see the SMB shares. The problem was that although the system could join the domain, it could not authenticate to the DC, with the end-result that it could only see security principals on itself and not the domain.After 4 hours of gingerly poking around, I figured out that nothing was wrong with the AD controller, and focused all my attention on the storage box. It was then that I discovered that the storage box was deliberately parsing only the first 16 characters of the domain. I downloaded a system update for the Solaris box and after installation, voila, the domain security principals could be seen.I must have been the happiest man alive when I saw that … haa haa … Probably a reminder to self : remember to apply all software updates before implementation. :)">
 
-<meta property="og:url" content="https://cmdbit.github.io/posts/2009-05-28-sun-storage-7110-update/">
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-05-28-sun-storage-7110-update/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Sun Storage 7110 update">
   <meta property="og:description" content="Ahh … I finally managed to find the solution to that storage issue I was facing at Te Puke.The Sun Storage 7110 was running the Solaris CIFS service which enabled Windows machines to see the SMB shares. The problem was that although the system could join the domain, it could not authenticate to the DC, with the end-result that it could only see security principals on itself and not the domain.After 4 hours of gingerly poking around, I figured out that nothing was wrong with the AD controller, and focused all my attention on the storage box. It was then that I discovered that the storage box was deliberately parsing only the first 16 characters of the domain. I downloaded a system update for the Solaris box and after installation, voila, the domain security principals could be seen.I must have been the happiest man alive when I saw that … haa haa … Probably a reminder to self : remember to apply all software updates before implementation. :)">
@@ -35,7 +35,7 @@
 
 
 
-<link rel="canonical" href="https://cmdbit.github.io/posts/2009-05-28-sun-storage-7110-update/">
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-05-28-sun-storage-7110-update/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -104,7 +104,7 @@
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.github.io/">
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -117,7 +117,7 @@
         
           
             <li class="navigation-item">
-              <a class="navigation-link " href="/pages/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
@@ -139,7 +139,7 @@
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.github.io/posts/2009-05-28-sun-storage-7110-update/">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-05-28-sun-storage-7110-update/">
               Sun Storage 7110 update
             </a>
           </h1>

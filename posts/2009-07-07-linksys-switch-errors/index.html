@@ -32,7 +32,7 @@ sigh I could see then that there was no point in trying further. The cause of th
 And it stuck at this point. Sigh. Since the problem wasn’t with the boot file, I suspected that the runtime image, SRW224G4P_SRW248G4P_image.bix was corrupted. So I did a power cycle, and held onto the key combination Ctrl-U to activate the preloader. Image Loader 1.0.1 File Name S/Up Type Size Create Time——————————— —- —- —— ————–$logfile_1 0 3 64 1193046:28:15 Factory_Default_Config.cfg 0 5 354 24:01:02 SRW224G4P_SRW248G4P_boot.bix 1 1 1377600 00:01:03 SRW224G4P_SRW248G4P_image.bix 1 2 3517532 00:03:42certificate 0 8 18040 24:00:56 startup-config 1 5 7851 70645:50:47 startup1.cfg 0 5 5537 24:01:14 ——————————— —- —- ———- —– Free Space : 2097152[X]modem Download [D]elete File [S]et Startup File[Q]uitSelect&gt; X Here, I selected X to do an Xmodem download, and uploaded the file to the switch via HyperTerminal. The whole process took about half an hour for a 3.5MB file. Xmodem Receiving Start :: CXMODEM, Successful.Blocks Received = 6b59Bytes Received = 35ac80Errors: Checksum = 0 Complement = 0 Duplicates = 0Image downloaded to buffer. [R]untime [D]iagnostic M[u]ltipe Image [L]oader (Warning: Are you sure what you are doing?) [Q]uitUpdate Image File:rRuntime Image Filename : SRW224G4P_SRW248G4P_image.bixUpdating file system.File system updated. [Press any key to continue]File Name S/Up Type Size Create Time——————————— —- —- ———- ———– $logfile_1 0 3 64 1193046:28:15Factory_Default_Config.cfg 0 5 354 24:01:02SRW224G4P_SRW248G4P_boot.bix 1 1 1377600 00:01:03 SRW224G4P_SRW248G4P_image.bix 1 2 3517532 00:05:05 certificate 0 8 18040 24:00:56 startup-config 1 5 7851 70645:50:47 startup1.cfg 0 5 5537 24 ——————————— —- —- ———- ———- Free Space : 2097152 [X]modem Download [D]elete File [S]et Startup File [Q]uit Select&gt; Q And I happily thought that everything was nice and dandy and so I proceed to power cycle the switch. User Mode — Performing Power-On Self Tests (POST) — DUMMY Test 1 …………….. PASS UART Loopback Test ……….. PASS POE UART Loopback Test ……. PASS DRAM Test ……………….. PASS Timer Test ………………. PASSDone All Pass. —————— DONE ——————— Loading Runtime Image File : SRW224G4P_SRW248G4P_image.bix Runtime 1.0.2 Pass root init doneSet Transition mode … [get stackingMac done ret_val] = 1 Assigned Unit ID:[1] stacking DB: unit = 0, module type = 0 Finish Set Transition mode … Enter Transition mode …
 sigh I could see then that there was no point in trying further. The cause of the problem could be anything, ranging from a blown capacitor to a faulty memory chip or EEPROM, let alone a corrupted runtime firmware. So off it goes to RMA.Frankly, I have never thought highly of Linksys switches used in production environments. The minimum I would go for is 3Com, and the best for any job would be the Cisco boxes. But these Linksys boxes are cheap; they go for less than half of the Cisco boxes.I guess you get what you pay for.">
 
-<meta property="og:url" content="https://cmdbit.github.io/posts/2009-07-07-linksys-switch-errors/">
+<meta property="og:url" content="https://cmdbit.codeberg.page/posts/2009-07-07-linksys-switch-errors/">
   <meta property="og:site_name" content="Confusing Musings and Wandering Ponderings">
   <meta property="og:title" content="Linksys switch errors">
   <meta property="og:description" content="I was trying to fix this Linksys SRW248G4P switch that malfunctioned yesterday at a customer site. The switch was functioning at the access layer of the site, and luckily the site did have a spare switch, which was promptly hooked up. I hooked up to the faulty switch via a RS232 console cable, set my HyperTerminal to 38400/N/1 and no flow control. And got the following results. User Mode — Performing Power-On Self Tests (POST) — DUMMY Test 1 …………….. PASS UART Loopback Test ……….. PASS POE UART Loopback Test ……. PASS DRAM Test ……………….. PASS Timer Test ………………. PASSDone All Pass. —————— DONE ——————— Loading Runtime Image File : SRW224G4P_SRW248G4P_image.bix Runtime 1.0.2 Pass root init doneSet Transition mode … [get stackingMac done ret_val] = 1 Assigned Unit ID:[1] stacking DB: unit = 0, module type = 0 Finish Set Transition mode … Enter Transition mode …
@@ -47,7 +47,7 @@ sigh I could see then that there was no point in trying further. The cause of th
 
 
 
-<link rel="canonical" href="https://cmdbit.github.io/posts/2009-07-07-linksys-switch-errors/">
+<link rel="canonical" href="https://cmdbit.codeberg.page/posts/2009-07-07-linksys-switch-errors/">
 
 
 <link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -116,7 +116,7 @@ sigh I could see then that there was no point in trying further. The cause of th
     <nav class="navigation">
   <section class="container">
     
-    <a class="navigation-title" href="https://cmdbit.github.io/">
+    <a class="navigation-title" href="https://cmdbit.codeberg.page/">
       Confusing Musings and Wandering Ponderings
     </a>
     
@@ -129,7 +129,7 @@ sigh I could see then that there was no point in trying further. The cause of th
         
           
             <li class="navigation-item">
-              <a class="navigation-link " href="/pages/about/">About</a>
+              <a class="navigation-link " href="/about/">About</a>
             </li>
           
             <li class="navigation-item">
@@ -151,7 +151,7 @@ sigh I could see then that there was no point in trying further. The cause of th
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://cmdbit.github.io/posts/2009-07-07-linksys-switch-errors/">
+            <a class="title-link" href="https://cmdbit.codeberg.page/posts/2009-07-07-linksys-switch-errors/">
               Linksys switch errors
             </a>
           </h1>

@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Apple on Confusing Musings and Wandering Ponderings</title>
-    <link>https://cmdbit.github.io/categories/apple/</link>
+    <link>https://cmdbit.codeberg.page/categories/apple/</link>
     <description>Recent content in Apple on Confusing Musings and Wandering Ponderings</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 Sep 2020 10:45:00 +1200</lastBuildDate>
-    <atom:link href="https://cmdbit.github.io/categories/apple/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://cmdbit.codeberg.page/categories/apple/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bad Apple MacOS update</title>
-      <link>https://cmdbit.github.io/posts/2020-09-28-bad-apple-update/</link>
+      <link>https://cmdbit.codeberg.page/posts/2020-09-28-bad-apple-update/</link>
       <pubDate>Mon, 28 Sep 2020 10:45:00 +1200</pubDate>
-      <guid>https://cmdbit.github.io/posts/2020-09-28-bad-apple-update/</guid>
+      <guid>https://cmdbit.codeberg.page/posts/2020-09-28-bad-apple-update/</guid>
       <description>&lt;p&gt;Users are reporting issues with the Mojava 2020-005 update. It seems to affect system performance, especially compressed memory usage.&lt;/p&gt;&#xA;&lt;p&gt;Mr Macintosh has a &lt;a href=&#34;https://mrmacintosh.com/mojave-2020-005-security-update-causing-major-problems-updated/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;good coverage of the issue&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I usually wait a few days before applying updates anyway.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The New iPad Air</title>
-      <link>https://cmdbit.github.io/posts/2019-09-11-ipad-air/</link>
+      <link>https://cmdbit.codeberg.page/posts/2019-09-11-ipad-air/</link>
       <pubDate>Wed, 11 Sep 2019 10:00:00 +1200</pubDate>
-      <guid>https://cmdbit.github.io/posts/2019-09-11-ipad-air/</guid>
+      <guid>https://cmdbit.codeberg.page/posts/2019-09-11-ipad-air/</guid>
       <description>&lt;p&gt;I was wondering what the &lt;a href=&#34;https://www.macstories.net/news/apple-introduces-larger-screen-7th-generation-ipad-with-smart-connector/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;new iPad&lt;/a&gt; targeted at the education sector would look like. It is surprisingly close to the old iPad Pro 10.5&amp;quot; and even to the current iPad Air, save for the screen size and in the case of the iPad Air, the CPU.&lt;/p&gt;&#xA;&lt;p&gt;Does it make sense compared to the current Chromebook offerings from Acer, Asus and HP? The price point is right for the 64GB model, and iPadOS promises to deliver on the shortcomings of the original iOS software.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Using Apple products</title>
-      <link>https://cmdbit.github.io/posts/2016-08-08-using-apple-products/</link>
+      <link>https://cmdbit.codeberg.page/posts/2016-08-08-using-apple-products/</link>
       <pubDate>Mon, 08 Aug 2016 17:31:08 +1200</pubDate>
-      <guid>https://cmdbit.github.io/posts/2016-08-08-using-apple-products/</guid>
+      <guid>https://cmdbit.codeberg.page/posts/2016-08-08-using-apple-products/</guid>
       <description>&lt;p&gt;So recently I have transitioned to using Apple products as my laptop / tablet / phone combo instead of a Chromebook / Samsung Galaxy Tablet 10.1 / Nexus 6 combination. This is due to several market shifts and personal circumstances which have shifted somewhat into Apple’s favour.&lt;/p&gt;&#xA;&lt;p&gt;LastPass was bought over by LogmeIn; this move didn’t resonate well with the community. I looked around for alternatives, somewhat reluctantly as LastPass had one of the best browser integration in the market. One of these alternatives was 1Password; I evaluated both their Windows and Mac versions and found their Mac version superior in UI design and easier to use.&#xA;1Password also had Android and iOS versions of their phone software. What sank the deal for me was that support for their new storage format, opvault, was only on iOS and not Android. This wasn’t surprising to me as any software company, let alone AgileBits, would have to prioritize development on particular platforms.&lt;/p&gt;</description>
     </item>
   </channel>
