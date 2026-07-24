@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Confusing Musings and Wandering Ponderings</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jul 2026 10:44:09 +1200</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 14:47:48 +1200</lastBuildDate>
     <atom:link href="https://cmdbit.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wireless networks and schools</title>
+      <link>https://cmdbit.github.io/posts/2025-06-30-wireless-5ghz/</link>
+      <pubDate>Fri, 24 Jul 2026 14:47:48 +1200</pubDate>
+      <guid>https://cmdbit.github.io/posts/2025-06-30-wireless-5ghz/</guid>
+      <description>&lt;p&gt;I spent pretty much the whole part of 2025 optimising the wireless network in my school. Most schools don&amp;rsquo;t have the technical expertise after the initial deployment to optimise the install; they are wholly dependent on the main vendor to configure everything. I find this a hit and miss scenario - most schools are left on the default configuration and untouched after that. After all, they could always call in to the hotline to get configurations changed. Unfortunately, most wouldn&amp;rsquo;t know how to describe the problem properly and if so, users complaining about wireless will almost always complain about 1 thing : speed.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Google ChromeOS updates</title>
       <link>https://cmdbit.github.io/posts/2026-07-24-google-chromeos-updates/</link>
